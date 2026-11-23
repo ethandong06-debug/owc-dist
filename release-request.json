@@ -1,0 +1,11 @@
+{
+  "version": "A3.5.1",
+  "version_code": 30501,
+  "tag": "A3.5.1",
+  "apk_url": "https://aka.doubaocdn.com/s/kLGx5reOp3",
+  "asset_name": "OpenWrt-Console-A3.5.1-arm64.apk",
+  "sha256": "498679965c65fdf89147bb544ee48c8f8d93319611edccfc7a7685fc7b1ff7d3",
+  "size": 24708108,
+  "signature": "XepjkRYQxA3BdlpciuDtbomvYaPaJMY3DyF7tgCixBRpY5uvBHESex1wTg2IqGEuQabFDDBrl1dZwT7tlufrDQ==",
+  "notes": "App 更新链路加固：强制 HTTPS 逐跳重定向、缓存清理、下载进度节流；内置后端 H3.3.3 清单。"
+}
