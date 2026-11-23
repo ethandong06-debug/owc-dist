@@ -1,9 +1,9 @@
 {
-  "version": "A3.5.0",
-  "version_code": 30500,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.0/OpenWrt-Console-A3.5.0-arm64.apk",
-  "sha256": "820dd10d1300018727958469f9bf5e7a1e6bf7b6d324189787642947169f0a16",
-  "size": 24707192,
-  "signature": "k8Z673l5p/Mnq0URyYx5bLdxuvi52af36QO3m7hZPfj2UVkFxNZJVqBcAN/YgfPkkX/LmDbfXiEFAX2k12TkDg==",
-  "notes": "App 自更新改为 GitHub Releases 固定源：签名清单、SHA256 校验、系统安装器确认。"
+  "version": "A3.5.1",
+  "version_code": 30501,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.1/OpenWrt-Console-A3.5.1-arm64.apk",
+  "sha256": "498679965c65fdf89147bb544ee48c8f8d93319611edccfc7a7685fc7b1ff7d3",
+  "size": 24708108,
+  "signature": "XepjkRYQxA3BdlpciuDtbomvYaPaJMY3DyF7tgCixBRpY5uvBHESex1wTg2IqGEuQabFDDBrl1dZwT7tlufrDQ==",
+  "notes": "App 更新链路加固：强制 HTTPS 逐跳重定向、缓存清理、下载进度节流；内置后端 H3.3.3 清单。"
 }
