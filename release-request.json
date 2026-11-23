@@ -1,0 +1,11 @@
+{
+  "version": "A3.5.0",
+  "version_code": 30500,
+  "tag": "A3.5.0",
+  "apk_url": "https://aka.doubaocdn.com/s/zLNdvfV8If",
+  "asset_name": "OpenWrt-Console-A3.5.0-arm64.apk",
+  "sha256": "820dd10d1300018727958469f9bf5e7a1e6bf7b6d324189787642947169f0a16",
+  "size": 24707192,
+  "signature": "k8Z673l5p/Mnq0URyYx5bLdxuvi52af36QO3m7hZPfj2UVkFxNZJVqBcAN/YgfPkkX/LmDbfXiEFAX2k12TkDg==",
+  "notes": "App 自更新改为 GitHub Releases 固定源：签名清单、SHA256 校验、系统安装器确认。"
+}

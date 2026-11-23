@@ -1,9 +1,9 @@
 {
-  "version": "A3.4.4",
-  "version_code": 30404,
-  "url": "https://aka.doubaocdn.com/s/hHya7pswex",
-  "sha256": "0cd86818191d259eee28389f4dc27675a78036f9262a948d526aa698d97c88be",
-  "size": 24707196,
-  "signature": "F1HiNNsa+hDVXMk66o1zbBbbjph+tXZr6w/g9TqboQ9anysIuN+e3diuQSiD8zNZ0yYgOoVL6N9dp9V7kxSPCQ==",
-  "notes": "系统页新增 App 升级：签名清单校验、APK 下载校验、系统安装器确认。"
+  "version": "A3.5.0",
+  "version_code": 30500,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.0/OpenWrt-Console-A3.5.0-arm64.apk",
+  "sha256": "820dd10d1300018727958469f9bf5e7a1e6bf7b6d324189787642947169f0a16",
+  "size": 24707192,
+  "signature": "k8Z673l5p/Mnq0URyYx5bLdxuvi52af36QO3m7hZPfj2UVkFxNZJVqBcAN/YgfPkkX/LmDbfXiEFAX2k12TkDg==",
+  "notes": "App 自更新改为 GitHub Releases 固定源：签名清单、SHA256 校验、系统安装器确认。"
 }
