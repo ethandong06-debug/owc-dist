@@ -1,0 +1,9 @@
+{
+  "version": "A3.4.4",
+  "version_code": 30404,
+  "url": "https://aka.doubaocdn.com/s/VXvFuaDxI9",
+  "sha256": "a703dbb35a79efd99bb37415559d35d143cf7dc398f0444fd1115c7f79d7244e",
+  "size": 24707196,
+  "signature": "Nj91G2cP8wdivi9PxB7gFgqCKwo8HlnMxa9PCW6wZIBC1xiVhaV/pFqGp/oCUhd5zAoMN1S/of3p4g/YDuCVCw==",
+  "notes": "系统页新增 App 升级：签名清单校验、APK 下载校验、系统安装器确认。"
+}
