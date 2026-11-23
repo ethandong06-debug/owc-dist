@@ -1,0 +1,78 @@
+name: publish-app-release
+
+on:
+  push:
+    paths:
+      - release-request.json
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: ${{ !contains(github.event.head_commit.message, '[skip publish]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read release request
+        run: |
+          python3 - <<'PY'
+          import json, os
+          r = json.load(open('release-request.json', encoding='utf-8'))
+          required = ['version', 'version_code', 'tag', 'apk_url', 'asset_name',
+                      'sha256', 'size', 'signature', 'notes']
+          missing = [k for k in required if k not in r]
+          if missing:
+              raise SystemExit('missing fields: ' + ', '.join(missing))
+          with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as f:
+              for k in required[:8]:
+                  f.write(f"{k.upper()}={r[k]}\n")
+              f.write('NOTES<<EOF\n' + r['notes'] + '\nEOF\n')
+          PY
+
+      - name: Download and verify APK
+        run: |
+          curl -fL --retry 3 --retry-delay 2 --max-time 300 "$APK_URL" -o "$ASSET_NAME"
+          echo "$SHA256  $ASSET_NAME" | sha256sum -c -
+          test "$(stat -c%s "$ASSET_NAME")" = "$SIZE"
+
+      - name: Build signed manifest
+        run: |
+          python3 - <<'PY'
+          import json, os
+          m = {
+              'version': os.environ['VERSION'],
+              'version_code': int(os.environ['VERSION_CODE']),
+              'url': f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/releases/download/{os.environ['TAG']}/{os.environ['ASSET_NAME']}",
+              'sha256': os.environ['SHA256'],
+              'size': int(os.environ['SIZE']),
+              'signature': os.environ['SIGNATURE'],
+              'notes': os.environ['NOTES'],
+          }
+          with open('app-manifest.json', 'w', encoding='utf-8') as f:
+              json.dump(m, f, ensure_ascii=False, indent=2)
+              f.write('\n')
+          with open('release-notes.txt', 'w', encoding='utf-8') as f:
+              f.write(os.environ['NOTES'] + '\n')
+          PY
+
+      - name: Create release and upload assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$TAG" "$ASSET_NAME" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "OWC App $VERSION" \
+            --notes-file release-notes.txt
+          gh release upload "$TAG" app-manifest.json \
+            --repo "$GITHUB_REPOSITORY" --clobber
+
+      - name: Commit public manifest and close request
+        run: |
+          git config user.name "owc-release-bot"
+          git config user.email "owc-release-bot@users.noreply.github.com"
+          git add app-manifest.json
+          git rm release-request.json
+          git commit -m "release: $VERSION signed manifest [skip publish]"
+          git push
