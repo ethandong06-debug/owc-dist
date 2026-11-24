@@ -29,9 +29,16 @@ jobs:
           missing = [k for k in required if k not in r]
           if missing:
               raise SystemExit('missing fields: ' + ', '.join(missing))
+          mirrors = r.get('mirror_urls', [])
+          if not isinstance(mirrors, list):
+              raise SystemExit('mirror_urls must be a list')
+          for u in mirrors:
+              if not isinstance(u, str) or not u.startswith('https://'):
+                  raise SystemExit('mirror_urls entries must be HTTPS URLs')
           with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as f:
               for k in required[:8]:
                   f.write(f"{k.upper()}={r[k]}\n")
+              f.write('MIRROR_URLS_JSON=' + json.dumps(mirrors, ensure_ascii=False) + '\n')
               f.write('NOTES<<EOF\n' + r['notes'] + '\nEOF\n')
           PY
 
@@ -103,6 +110,9 @@ jobs:
               'signature': os.environ['SIGNATURE'],
               'notes': os.environ['NOTES'],
           }
+          mirrors = json.loads(os.environ.get('MIRROR_URLS_JSON', '[]'))
+          if mirrors:
+              m['mirror_urls'] = mirrors
           with open('app-manifest.json', 'w', encoding='utf-8') as f:
               json.dump(m, f, ensure_ascii=False, indent=2)
               f.write('\n')
@@ -122,6 +132,9 @@ jobs:
               raise SystemExit('manifest url must point at GitHub releases')
           if not re.fullmatch(r'[0-9a-f]{64}', m['sha256']):
               raise SystemExit('manifest sha256 invalid')
+          for u in m.get('mirror_urls', []):
+              if not isinstance(u, str) or not u.startswith('https://'):
+                  raise SystemExit('manifest mirror_urls must be HTTPS')
           canonical = f"{m['version']}\n{int(m['version_code'])}\n{m['sha256']}\n{int(m['size'])}"
           open('/tmp/owc-manifest-canonical', 'w', encoding='utf-8').write(canonical)
           open('/tmp/owc-manifest-signature', 'wb').write(base64.b64decode(m['signature'], validate=True))
