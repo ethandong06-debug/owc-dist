@@ -1,9 +1,9 @@
 {
-  "version": "A3.5.1",
-  "version_code": 30501,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.1/OpenWrt-Console-A3.5.1-arm64.apk",
-  "sha256": "498679965c65fdf89147bb544ee48c8f8d93319611edccfc7a7685fc7b1ff7d3",
-  "size": 24708108,
-  "signature": "XepjkRYQxA3BdlpciuDtbomvYaPaJMY3DyF7tgCixBRpY5uvBHESex1wTg2IqGEuQabFDDBrl1dZwT7tlufrDQ==",
-  "notes": "App 更新链路加固：强制 HTTPS 逐跳重定向、缓存清理、下载进度节流；内置后端 H3.3.3 清单。"
+  "version": "A3.5.2",
+  "version_code": 30502,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.2/OpenWrt-Console-A3.5.2-arm64.apk",
+  "sha256": "b3cb777a317954ff4d9078cee6d852e9be28a3c2bd874d34e8320c488d9f1253",
+  "size": 24774068,
+  "signature": "65MLQhGG4n3UMopZqd0QPfP7+PZ8iwuFR6yPAjpJxIFXqRCRzzSMDSCxjBdlNv022CYD0kFVcVhwQNLXdc6ICg==",
+  "notes": "新增更新中心：App 自更新与后端 OTA 统一入口，支持自定义 HTTPS 清单源、逐源验签探测、一键恢复 GitHub 官方源；App 与后端同步换源，签名校验不可绕过。"
 }
