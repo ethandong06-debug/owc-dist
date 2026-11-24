@@ -1,12 +1,12 @@
 {
-  "version": "A3.5.11",
-  "version_code": 30511,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.11/OpenWrt-Console-A3.5.11-arm64.apk",
-  "sha256": "051351445c19403efb63447858285f08a817783fd6cc835e318a5f0da8d03c86",
+  "version": "A3.5.12",
+  "version_code": 30512,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.12/OpenWrt-Console-A3.5.12-arm64.apk",
+  "sha256": "f92f23c1d1816ba1814c4d16a0e28d23ecd31703e223a164556f9933659abc7d",
   "size": 24774296,
-  "signature": "5gMzv2tKEB/hUR52OUQBeqriovyepjKW3SWktSrTUx2Qdx2jj1wWEUeLg0vp1uIxuHoROt5V/WSefIkF76tLBQ==",
-  "notes": "修复 App 自更新在 GitHub/raw 不可达时失败：内置 ghproxy/ghfast/gh-proxy 国内反向代理与 jsDelivr 兜底；所有可用源按 versionCode 取最高，避免缓存较旧的镜像挡住新版本；清单携带 CDN APK 镜像，APK 仍强制 Ed25519 验签和 SHA256。后端 OTA 升级后自动轮询状态，完成后重连并重试拉取，直到版本号刷新，不再需要退出更新中心。",
+  "signature": "t5mvtoviT9K7ykpcACVOllGFxk1D5vpJW2IJHXbltaszxYp6gmn45Ntkccojqw3Nn9ZP7P2SPZg/MviLsCgoAQ==",
+  "notes": "修复更新中心“后端清单源未接入”：先读取 /api/v1/system/update/source 并立即刷新 UI，再拉清单；后端清单探测超时不再卡住按钮或清空源入口。保留多镜像取最高版本与后端 OTA 自动轮询/重连刷新。",
   "mirror_urls": [
-    "https://aka.doubaocdn.com/s/QHnUBJSmrn"
+    "https://aka.doubaocdn.com/s/yluui2WW4h"
   ]
 }
