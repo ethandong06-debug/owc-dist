@@ -1,12 +1,9 @@
 {
-  "version": "A3.5.14",
-  "version_code": 30514,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.14/OpenWrt-Console-A3.5.14-arm64.apk",
-  "sha256": "6919bb786ae50cccb288618c477573609b3f5c4ae5a8a05ca59203db939e558c",
-  "size": 24840052,
-  "signature": "plAVeNm98eE+YvQzFoXFlvmKmvErRwF5L50jJvmJaZ/aDh7MtJm3pFElRHcERIrBR7WYPW/tfWx8bDAk7Fn9Aw==",
-  "notes": "备份导出改为流式下载并直接按文件分享，不再把整包转 base64；V3 响应体在流式读取阶段限 8 MiB，JSON-RPC 限 4 MiB；修复 8088 降级泄漏、更新源被状态失败清空、历史落盘并发丢写。",
-  "mirror_urls": [
-    "https://aka.doubaocdn.com/s/DUVZCUcOMN"
-  ]
+  "version": "A3.6.1",
+  "version_code": 30601,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.6.1/OpenWrt-Console-A3.6.1-arm64.apk",
+  "sha256": "83ea1b5ebf36bcd964a7e7ab4aad778e14f15b9bf1b459b926b83af470da52c4",
+  "size": 24840844,
+  "signature": "fpKorKhD1sIg8RCNM0XYXf4IeOlT/u2Siv/eEK67BJT2z9kdpVuFJ/oloeqrg9sU0brfTVD0KWCnyq8s3qmWCw==",
+  "notes": "首次连接 HTTPS 证书指纹确认与 SSH host key 持久化；更新仅 Wi-Fi/启动自动检查；备份锁定；logout 失效会话；历史 15s 降频与 SSE 抖动。"
 }
