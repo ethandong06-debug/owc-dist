@@ -1,0 +1,11 @@
+{
+  "version": "A3.5.4",
+  "version_code": 30504,
+  "tag": "A3.5.4",
+  "apk_url": "https://aka.doubaocdn.com/s/yKPdT4kYRT",
+  "asset_name": "OpenWrt-Console-A3.5.4-arm64.apk",
+  "sha256": "0cdabcb42f6f56d84b8ef4cfeeaa585200f55d8587e617afa32a70fe35f0fa8d",
+  "size": 24774068,
+  "signature": "ft+PHNyQxz2wpavEvTOkZF/sCq3C7uHXLv2OezwGPMF8Q021m/O2KrThPPhFJ8RDAfQnsPxo/00P9ySjrjcKAA==",
+  "notes": "A3.5.4 热修：原生 WireGuard 公钥由 64 位 hex 统一转成 44 位 Base64；手动隧道卡片复制的公钥可被 wg set / wg.prepare 直接接受；新增 hex→Base64 回归测试。"
+}
