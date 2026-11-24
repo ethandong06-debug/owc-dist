@@ -1,12 +1,12 @@
 {
-  "version": "A3.5.8",
-  "version_code": 30508,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.8/OpenWrt-Console-A3.5.8-arm64.apk",
-  "sha256": "e29320cc0c7e1a68bad0d2d2494f948e5db0e50de2872fb4fb19e31ceefe5282",
+  "version": "A3.5.9",
+  "version_code": 30509,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.9/OpenWrt-Console-A3.5.9-arm64.apk",
+  "sha256": "a1ca76fa2b0d604ec85f2389044d41adba997d9f5efa1c7d271fefe5ef4a3f1c",
   "size": 24774296,
-  "signature": "GoqOpHWWdkbZfX9Q6WPvfWSRlr7hvMM4JIg6eMhYflmf0+fMPV6/Xb0Yzh+zHAalqjoyJVZGFXHmZUlOzFCJCg==",
-  "notes": "修复 App 自更新在 GitHub/raw 不可达时失败：内置 ghproxy/ghfast/gh-proxy 国内反向代理与 jsDelivr 兜底，清单携带 CDN APK 镜像，APK 仍强制 Ed25519 验签和 SHA256。后端 OTA 升级后自动轮询状态、断线自动重连并刷新当前版本，不再需要退出更新中心。",
+  "signature": "OUzSdYCrMIP3cxHpNzvNoISH8CD5k5GDzL48WfYf54WU6UWcd4PqX++n8Hv8A6uVdc2SsgOk+NQhqlhmjPDhAg==",
+  "notes": "修复 App 自更新在 GitHub/raw 不可达时失败：内置 ghproxy/ghfast/gh-proxy 国内反向代理与 jsDelivr 兜底，清单携带 CDN APK 镜像，APK 仍强制 Ed25519 验签和 SHA256。后端 OTA 升级后自动轮询状态，完成后重连并重试拉取，直到版本号刷新，不再需要退出更新中心。",
   "mirror_urls": [
-    "https://aka.doubaocdn.com/s/X8jHZh0HCX"
+    "https://aka.doubaocdn.com/s/1EQfNRyxVr"
   ]
 }
