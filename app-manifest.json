@@ -1,9 +1,9 @@
 {
-  "version": "A3.5.4",
-  "version_code": 30504,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.4/OpenWrt-Console-A3.5.4-arm64.apk",
-  "sha256": "0cdabcb42f6f56d84b8ef4cfeeaa585200f55d8587e617afa32a70fe35f0fa8d",
-  "size": 24774068,
-  "signature": "ft+PHNyQxz2wpavEvTOkZF/sCq3C7uHXLv2OezwGPMF8Q021m/O2KrThPPhFJ8RDAfQnsPxo/00P9ySjrjcKAA==",
-  "notes": "A3.5.4 热修：原生 WireGuard 公钥由 64 位 hex 统一转成 44 位 Base64；手动隧道卡片复制的公钥可被 wg set / wg.prepare 直接接受；新增 hex→Base64 回归测试。"
+  "version": "A3.5.5",
+  "version_code": 30505,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.5/OpenWrt-Console-A3.5.5-arm64.apk",
+  "sha256": "dadac541f25fc9399571ecadb1863cfb5fae3b816dcfbda3d831f3e2870bdc14",
+  "size": 24774296,
+  "signature": "6Qs8lEKpTr1Oi6dop+Ub+wgYLl2jafqkET6xCijnIUCpFJW1uwyd5k2EzQLMv5prBT3/PL2jQk59r8ogWDTPAg==",
+  "notes": "A3.5.5：手动/已保存隧道先等待 WireGuard 握手，peer 未登记时直接给出本机公钥与配置提示，不再误报 10.10.10.1 登录失败；内置后端推荐升到 H3.4.1，新设备安装器直接装最新后端。"
 }
