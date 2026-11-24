@@ -2,13 +2,13 @@
   "version": "A3.5.7",
   "version_code": 30507,
   "tag": "A3.5.7",
-  "apk_url": "https://aka.doubaocdn.com/s/sIxJC9DEzP",
+  "apk_url": "https://aka.doubaocdn.com/s/VnUUsALUFm",
   "asset_name": "OpenWrt-Console-A3.5.7-arm64.apk",
   "sha256": "6b610f36a54ef8de47e15cb6f8f81d226807c88258eb6f6afb440f31fc7a4188",
   "size": 24774296,
   "signature": "pmVxoFDr+fYsRNZvXEsiTL3fpjubRdZzvYdPwuA+datkZxwmoya3pRAIqZmVJcahpVpApOD9FdBIX8FSi0VzAg==",
   "notes": "修复 App 自更新在 GitHub/raw 不可达时失败：内置 jsDelivr @latest 清单镜像，清单携带 CDN APK 镜像，APK 仍强制 Ed25519 验签和 SHA256。后端 OTA 升级后自动轮询状态、断线自动重连并刷新当前版本，不再需要退出更新中心。",
   "mirror_urls": [
-    "https://aka.doubaocdn.com/s/sIxJC9DEzP"
+    "https://aka.doubaocdn.com/s/VnUUsALUFm"
   ]
 }
