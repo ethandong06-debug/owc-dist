@@ -1,9 +1,9 @@
 {
-  "version": "A3.5.3",
-  "version_code": 30503,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.3/OpenWrt-Console-A3.5.3-arm64.apk",
-  "sha256": "613e3a974a824a786e67bdb3ec262d12db64d8bda1f05478732b629f9157d6f1",
+  "version": "A3.5.4",
+  "version_code": 30504,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.4/OpenWrt-Console-A3.5.4-arm64.apk",
+  "sha256": "0cdabcb42f6f56d84b8ef4cfeeaa585200f55d8587e617afa32a70fe35f0fa8d",
   "size": 24774068,
-  "signature": "jtjr5EOSGp/ISwmZ1j5BVzOpqeGy9cjDo4kDRQXWI6XR1JNqSbwdfgEEhX+6qB4SQpLB1A9GYM5Rrg3K199cDA==",
-  "notes": "A3.5.3 热修：手动隧道入口可生成并复制手机 WireGuard 公钥；缺私钥时给出可操作提示，不再只显示 NO_KEY；增加窄屏与大字号测试。"
+  "signature": "ft+PHNyQxz2wpavEvTOkZF/sCq3C7uHXLv2OezwGPMF8Q021m/O2KrThPPhFJ8RDAfQnsPxo/00P9ySjrjcKAA==",
+  "notes": "A3.5.4 热修：原生 WireGuard 公钥由 64 位 hex 统一转成 44 位 Base64；手动隧道卡片复制的公钥可被 wg set / wg.prepare 直接接受；新增 hex→Base64 回归测试。"
 }
