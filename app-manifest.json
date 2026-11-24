@@ -1,9 +1,9 @@
 {
-  "version": "A3.5.2",
-  "version_code": 30502,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.2/OpenWrt-Console-A3.5.2-arm64.apk",
-  "sha256": "b3cb777a317954ff4d9078cee6d852e9be28a3c2bd874d34e8320c488d9f1253",
+  "version": "A3.5.3",
+  "version_code": 30503,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.3/OpenWrt-Console-A3.5.3-arm64.apk",
+  "sha256": "613e3a974a824a786e67bdb3ec262d12db64d8bda1f05478732b629f9157d6f1",
   "size": 24774068,
-  "signature": "65MLQhGG4n3UMopZqd0QPfP7+PZ8iwuFR6yPAjpJxIFXqRCRzzSMDSCxjBdlNv022CYD0kFVcVhwQNLXdc6ICg==",
-  "notes": "新增更新中心：App 自更新与后端 OTA 统一入口，支持自定义 HTTPS 清单源、逐源验签探测、一键恢复 GitHub 官方源；App 与后端同步换源，签名校验不可绕过。"
+  "signature": "jtjr5EOSGp/ISwmZ1j5BVzOpqeGy9cjDo4kDRQXWI6XR1JNqSbwdfgEEhX+6qB4SQpLB1A9GYM5Rrg3K199cDA==",
+  "notes": "A3.5.3 热修：手动隧道入口可生成并复制手机 WireGuard 公钥；缺私钥时给出可操作提示，不再只显示 NO_KEY；增加窄屏与大字号测试。"
 }
