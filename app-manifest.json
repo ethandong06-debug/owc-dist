@@ -1,12 +1,12 @@
 {
-  "version": "A3.5.12",
-  "version_code": 30512,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.12/OpenWrt-Console-A3.5.12-arm64.apk",
-  "sha256": "f92f23c1d1816ba1814c4d16a0e28d23ecd31703e223a164556f9933659abc7d",
-  "size": 24774296,
-  "signature": "t5mvtoviT9K7ykpcACVOllGFxk1D5vpJW2IJHXbltaszxYp6gmn45Ntkccojqw3Nn9ZP7P2SPZg/MviLsCgoAQ==",
-  "notes": "修复更新中心“后端清单源未接入”：先读取 /api/v1/system/update/source 并立即刷新 UI，再拉清单；后端清单探测超时不再卡住按钮或清空源入口。保留多镜像取最高版本与后端 OTA 自动轮询/重连刷新。",
+  "version": "A3.5.13",
+  "version_code": 30513,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.13/OpenWrt-Console-A3.5.13-arm64.apk",
+  "sha256": "1e6ca38e15f6ff3f56098c089b571c09d7c667cb544fdcda87e9dca7c3a18194",
+  "size": 24774292,
+  "signature": "zAvurjb3A3Vai3HfnMZ76FkWAZg14S479XdbrMgqtoMJiw9vLGSbvLthsfM59QQ0WDW4AhBDuZPRbTvpCoT1BQ==",
+  "notes": "更新下载时在系统状态栏显示实时进度（百分比/已下载大小），完成后留下可点击通知；更新中心卡片同步显示下载百分比与大小，按钮不再只显示“处理中…”。",
   "mirror_urls": [
-    "https://aka.doubaocdn.com/s/yluui2WW4h"
+    "https://aka.doubaocdn.com/s/qf7xm7TzVb"
   ]
 }
