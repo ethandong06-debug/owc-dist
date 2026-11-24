@@ -1,0 +1,12 @@
+{
+  "version": "A3.6.1",
+  "version_code": 30601,
+  "tag": "A3.6.1",
+  "apk_url": "https://aka.doubaocdn.com/s/5DziDJPayi",
+  "mirror_urls": [],
+  "asset_name": "OpenWrt-Console-A3.6.1-arm64.apk",
+  "sha256": "83ea1b5ebf36bcd964a7e7ab4aad778e14f15b9bf1b459b926b83af470da52c4",
+  "size": 24840844,
+  "signature": "fpKorKhD1sIg8RCNM0XYXf4IeOlT/u2Siv/eEK67BJT2z9kdpVuFJ/oloeqrg9sU0brfTVD0KWCnyq8s3qmWCw==",
+  "notes": "首次连接 HTTPS 证书指纹确认与 SSH host key 持久化；更新仅 Wi-Fi/启动自动检查；备份锁定；logout 失效会话；历史 15s 降频与 SSE 抖动。"
+}
