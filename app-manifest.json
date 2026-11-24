@@ -1,9 +1,12 @@
 {
-  "version": "A3.5.5",
-  "version_code": 30505,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.5/OpenWrt-Console-A3.5.5-arm64.apk",
-  "sha256": "dadac541f25fc9399571ecadb1863cfb5fae3b816dcfbda3d831f3e2870bdc14",
+  "version": "A3.5.6",
+  "version_code": 30506,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.6/OpenWrt-Console-A3.5.6-arm64.apk",
+  "sha256": "682d9846f5a8344288689ecaac1b565c5a5174c351f584a6461fda6525bee973",
   "size": 24774296,
-  "signature": "6Qs8lEKpTr1Oi6dop+Ub+wgYLl2jafqkET6xCijnIUCpFJW1uwyd5k2EzQLMv5prBT3/PL2jQk59r8ogWDTPAg==",
-  "notes": "A3.5.5：手动/已保存隧道先等待 WireGuard 握手，peer 未登记时直接给出本机公钥与配置提示，不再误报 10.10.10.1 登录失败；内置后端推荐升到 H3.4.1，新设备安装器直接装最新后端。"
+  "signature": "Ud2OpGbVgMKBL07MM3N5Uk8wwc20ZMQkHdVgVleheX4QhBP6QmeHk0O5SSpVm/PJqmIwzefMUJvguojkexRzDw==",
+  "notes": "修复 App 自更新在 GitHub 不可达时失败：内置 jsDelivr 清单镜像与 CDN APK 镜像，仍强制 Ed25519 验签和 SHA256。后端 OTA 升级后自动轮询状态、自动重连并刷新当前版本，不再需要退出更新中心。",
+  "mirror_urls": [
+    "https://aka.doubaocdn.com/s/VpEJn2vJii"
+  ]
 }
