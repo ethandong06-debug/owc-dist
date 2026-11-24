@@ -8,5 +8,6 @@
   "size": 24840052,
   "signature": "plAVeNm98eE+YvQzFoXFlvmKmvErRwF5L50jJvmJaZ/aDh7MtJm3pFElRHcERIrBR7WYPW/tfWx8bDAk7Fn9Aw==",
   "mirror_urls": ["https://aka.doubaocdn.com/s/DUVZCUcOMN"],
+  "retry": 1,
   "notes": "备份导出改为流式下载并直接按文件分享，不再把整包转 base64；V3 响应体在流式读取阶段限 8 MiB，JSON-RPC 限 4 MiB；修复 8088 降级泄漏、更新源被状态失败清空、历史落盘并发丢写。"
 }
