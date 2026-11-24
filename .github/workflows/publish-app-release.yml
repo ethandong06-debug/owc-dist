@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: publish-app-release
+  cancel-in-progress: false
+
 jobs:
   publish:
     if: ${{ !contains(github.event.head_commit.message, '[skip publish]') }}
@@ -31,8 +35,57 @@ jobs:
               f.write('NOTES<<EOF\n' + r['notes'] + '\nEOF\n')
           PY
 
+      - name: Verify signed request and version
+        env:
+          # Ed25519 SubjectPublicKeyInfo DER = 302a300506032b6570032100 + raw public key.
+          OWC_MANIFEST_PUBKEY: "302a300506032b6570032100ffef8dfc9e818fe2a0b70c18c2f3b03608707e3d50464f40a355096f142881d5"
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import base64, json, os, re, subprocess
+          r = json.load(open('release-request.json', encoding='utf-8'))
+          if r['tag'] != r['version']:
+              raise SystemExit('tag must equal version')
+          if not re.fullmatch(r'A\d+\.\d+\.\d+', r['version']):
+              raise SystemExit('invalid app version: ' + r['version'])
+          version_code = int(r['version_code'])
+          size = int(r['size'])
+          if version_code <= 0 or size <= 0:
+              raise SystemExit('version_code and size must be positive')
+          if not re.fullmatch(r'[0-9a-f]{64}', r['sha256']):
+              raise SystemExit('sha256 must be 64 lowercase hex chars')
+          if not r['asset_name'].endswith('.apk'):
+              raise SystemExit('asset_name must end with .apk')
+          if not str(r['apk_url']).startswith('https://'):
+              raise SystemExit('apk_url must use https')
+          canonical = f"{r['version']}\n{version_code}\n{r['sha256']}\n{size}"
+          open('/tmp/owc-release-canonical', 'w', encoding='utf-8').write(canonical)
+          try:
+              sig = base64.b64decode(r['signature'], validate=True)
+          except Exception as exc:
+              raise SystemExit('signature is not valid base64: %s' % exc)
+          open('/tmp/owc-release-signature', 'wb').write(sig)
+
+          # Release hygiene: never let a lower version_code replace the latest feed.
+          url = f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/releases/latest/download/app-manifest.json"
+          try:
+              current = json.loads(subprocess.check_output(
+                  ['curl', '-fsSL', '--max-time', '30', url], text=True))
+              if version_code <= int(current['version_code']):
+                  raise SystemExit(
+                      f"version_code {version_code} must be greater than latest {current['version_code']}")
+              print(f"latest={current['version']} ({current['version_code']}), new={r['version']} ({version_code})")
+          except subprocess.CalledProcessError:
+              print('no existing app-manifest.json; first release')
+          PY
+          printf '%s' "$OWC_MANIFEST_PUBKEY" | xxd -r -p > /tmp/owc-release-pub.der
+          openssl pkey -pubin -inform DER -in /tmp/owc-release-pub.der -noout
+          openssl pkeyutl -verify -pubin -inkey /tmp/owc-release-pub.der -keyform DER \
+            -rawin -in /tmp/owc-release-canonical -sigfile /tmp/owc-release-signature
+
       - name: Download and verify APK
         run: |
+          set -euo pipefail
           curl -fL --retry 3 --retry-delay 2 --max-time 300 "$APK_URL" -o "$ASSET_NAME"
           echo "$SHA256  $ASSET_NAME" | sha256sum -c -
           test "$(stat -c%s "$ASSET_NAME")" = "$SIZE"
@@ -57,10 +110,36 @@ jobs:
               f.write(os.environ['NOTES'] + '\n')
           PY
 
+      - name: Verify built manifest
+        env:
+          OWC_MANIFEST_PUBKEY: "302a300506032b6570032100ffef8dfc9e818fe2a0b70c18c2f3b03608707e3d50464f40a355096f142881d5"
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import base64, json, re
+          m = json.load(open('app-manifest.json', encoding='utf-8'))
+          if not m['url'].startswith('https://github.com/'):
+              raise SystemExit('manifest url must point at GitHub releases')
+          if not re.fullmatch(r'[0-9a-f]{64}', m['sha256']):
+              raise SystemExit('manifest sha256 invalid')
+          canonical = f"{m['version']}\n{int(m['version_code'])}\n{m['sha256']}\n{int(m['size'])}"
+          open('/tmp/owc-manifest-canonical', 'w', encoding='utf-8').write(canonical)
+          open('/tmp/owc-manifest-signature', 'wb').write(base64.b64decode(m['signature'], validate=True))
+          print(f"manifest {m['version']} ({m['version_code']}) size={m['size']}")
+          PY
+          printf '%s' "$OWC_MANIFEST_PUBKEY" | xxd -r -p > /tmp/owc-release-pub.der
+          openssl pkeyutl -verify -pubin -inkey /tmp/owc-release-pub.der -keyform DER \
+            -rawin -in /tmp/owc-manifest-canonical -sigfile /tmp/owc-manifest-signature
+
       - name: Create release and upload assets
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          set -euo pipefail
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "release $TAG already exists; refusing to overwrite" >&2
+            exit 1
+          fi
           gh release create "$TAG" "$ASSET_NAME" \
             --repo "$GITHUB_REPOSITORY" \
             --title "OWC App $VERSION" \
@@ -70,6 +149,7 @@ jobs:
 
       - name: Commit public manifest and close request
         run: |
+          set -euo pipefail
           git config user.name "owc-release-bot"
           git config user.email "owc-release-bot@users.noreply.github.com"
           git add app-manifest.json
