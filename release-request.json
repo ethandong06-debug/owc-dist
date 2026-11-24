@@ -1,0 +1,11 @@
+{
+  "version": "A3.5.3",
+  "version_code": 30503,
+  "tag": "A3.5.3",
+  "apk_url": "https://aka.doubaocdn.com/s/rd6CxHxD9C",
+  "asset_name": "OpenWrt-Console-A3.5.3-arm64.apk",
+  "sha256": "613e3a974a824a786e67bdb3ec262d12db64d8bda1f05478732b629f9157d6f1",
+  "size": 24774068,
+  "signature": "jtjr5EOSGp/ISwmZ1j5BVzOpqeGy9cjDo4kDRQXWI6XR1JNqSbwdfgEEhX+6qB4SQpLB1A9GYM5Rrg3K199cDA==",
+  "notes": "A3.5.3 热修：手动隧道入口可生成并复制手机 WireGuard 公钥；缺私钥时给出可操作提示，不再只显示 NO_KEY；增加窄屏与大字号测试。"
+}
