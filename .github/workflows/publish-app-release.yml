@@ -93,9 +93,35 @@ jobs:
       - name: Download and verify APK
         run: |
           set -euo pipefail
-          curl -fL --retry 3 --retry-delay 2 --max-time 300 "$APK_URL" -o "$ASSET_NAME"
-          echo "$SHA256  $ASSET_NAME" | sha256sum -c -
-          test "$(stat -c%s "$ASSET_NAME")" = "$SIZE"
+          # CDN handshakes from GitHub runners are occasionally flaky (curl exit 35).
+          # Try IPv4 + HTTP/1.1 + TLS 1.2 first, then a relaxed-TLS pass. Every attempt
+          # is verified against the signed SHA-256 and size before it can be published.
+          urls=("$APK_URL")
+          while IFS= read -r u; do
+            [ -n "$u" ] && urls+=("$u")
+          done < <(python3 -c 'import json,os; print("\n".join(json.loads(os.environ.get("MIRROR_URLS_JSON") or "[]")))')
+          ok=0
+          for u in "${urls[@]}"; do
+            for mode in strict relaxed; do
+              echo "download ($mode): $u"
+              rm -f "$ASSET_NAME"
+              if [ "$mode" = strict ]; then
+                curl -fL -4 --http1.1 --tlsv1.2 --retry 5 --retry-all-errors --retry-delay 3 \
+                  --connect-timeout 30 --max-time 600 "$u" -o "$ASSET_NAME" || true
+              else
+                curl -fL -4 --http1.1 --insecure --retry 5 --retry-all-errors --retry-delay 3 \
+                  --connect-timeout 30 --max-time 600 "$u" -o "$ASSET_NAME" || true
+              fi
+              if [ -s "$ASSET_NAME" ] && \
+                 echo "$SHA256  $ASSET_NAME" | sha256sum -c - && \
+                 test "$(stat -c%s "$ASSET_NAME")" = "$SIZE"; then
+                ok=1
+                break 2
+              fi
+            done
+            rm -f "$ASSET_NAME"
+          done
+          test "$ok" = 1
 
       - name: Build signed manifest
         run: |
