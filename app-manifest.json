@@ -1,12 +1,9 @@
 {
-  "version": "A3.7.9",
-  "version_code": 30709,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.9/OpenWrt-Console-A3.7.9-arm64.apk",
-  "sha256": "567dcddba778e30caf8003d7757eb1957854a419727820b2c35e76c4ff68bef3",
-  "size": 24889770,
-  "signature": "R45i7CVvtd9hQdK+bdKqW7R6FKbKGapJVKIDOUCDk7UzESTn5rfeK5y3xT7ctNosvEa6jhFyYzed5QbxUAUzAQ==",
-  "notes": "## A3.7.9 / 30709 — 更新中心六项加固与后台下载\n\n- 下载中可取消：Android DownloadManager 任务直接取消，应用内 HttpClient 通过关闭 client 中止；更新中心显示“取消下载”。\n- 旧清单保护：更新源返回更低版本或空清单时，保留已保存/已下载的更高版本，不降级、不删包。\n- 清单源并发：六源并发探测，单源 18 秒上限，取成功源中 versionCode 最大者；下载进度按百分比/约 120ms 节流。\n- Android 后台下载：接入系统 DownloadManager，App 被杀后继续下载；冷启动恢复 pending，完成后重新校验 SHA256 再转为待安装。\n- 安装前原生校验：包名、清单 versionCode、发布签名证书 SHA-256 全部匹配才允许打开系统安装器。\n- 下载链路加固：写 .part 校验通过后原子重命名；每 URL 最多 2 次并按 mirror_urls 重试；发布清单带已校验 CDN 镜像。\n\nAPK: 24,889,770 B\nSHA256: 567dcddba778e30caf8003d7757eb1957854a419727820b2c35e76c4ff68bef3\n\n本版未做真机验收；后台杀进程继续下载、完成通知、权限返回、系统安装器与原生签名校验仍需真机确认。后端继续沿用 H3.4.5。",
-  "mirror_urls": [
-    "https://aka.doubaocdn.com/s/6oR6GfHfz5"
-  ]
+  "version": "A3.7.10",
+  "version_code": 30710,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.10/OpenWrt-Console-A3.7.10-arm64.apk",
+  "sha256": "b441081571d61a7af7caa0bf26200f1ebf869e0f6fad4928e79e0ba7b87e959c",
+  "size": 25020998,
+  "signature": "mzK5O6peCcUHbC9iJx+np/z7RYHfe7OLH4FyFjgiuFM0G1OBU4q3oy/B5ZX6mPY4701S5jcblotizeKygdyHAA==",
+  "notes": "## A3.7.10 / 30710 — 登录、设备、网络、设置与弹窗一次收口\n\n- 登录增加 ubus 预检：局域网 3 秒、隧道 5 秒；账号或密码错误在密码框下秒级提示，按钮显示当前阶段。\n- 设备页增加设备/管理入口、在线优先/名称/流量排序、实时 ↓/↑、上次在线和新设备“新”标记。\n- 网络页删除独立 DNS/DHCP 卡，DNS 进 WAN、DHCP 留 LAN；默认 WiFi 第一，长按卡片拖动排序，右上角排序/关闭。\n- 设置页退出登录改为“返回登录页”，只断会话，保留地址/账号/密码；危险区只留恢复默认。\n- 证书/SSH 指纹改用专用信任层；小按钮触控区 44×40；主视图实现词改人话，空态统一“没读到……”。\n\nAPK: 25,020,998 B\nSHA256: b441081571d61a7af7caa0bf26200f1ebf869e0f6fad4928e79e0ba7b87e959c\n\n本版未做真机验收；后端继续 H3.4.5。"
 }
