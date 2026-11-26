@@ -1,12 +1,12 @@
 {
-  "version": "A3.7.12",
-  "version_code": 30712,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.12/OpenWrt-Console-A3.7.12-arm64.apk",
-  "sha256": "4c581da1cf36adc18693de28e626c5bfd2b8f7d2e23d788cf21338ef6146ea63",
-  "size": 25087394,
-  "signature": "Yg4ZWW5aNL6n/q2vgOrzNv+9KltVWIZmkyICeauWj4RkJ2Prjo48tx3HHDkRScis6WJz3JUotH/6BOXJfejZCg==",
-  "notes": "## A3.7.12 / 30712 — 网络页从 WiFi 往下补齐\n\n按确认的“WiFi 以上的都不要，从 WiFi 开始往下都可以要”：\n\n- 删除 hero、拓扑、公网 IP/速率总览，WiFi 第一。\n- WAN 详情、线路质量、LAN/DHCP 租约、端口计数、VLAN、加速统计、Ping/DNS/路由/端口工具。\n- 内置后端推荐 H3.4.6。\n\nAPK: 25,087,394 B\nSHA256: 4c581da1cf36adc18693de28e626c5bfd2b8f7d2e23d788cf21338ef6146ea63\n建议覆盖安装。未真机验收。",
+  "version": "A3.7.13",
+  "version_code": 30713,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.13/OpenWrt-Console-A3.7.13-arm64.apk",
+  "sha256": "c6bd6bdfd7867c819f1561d3c5c91ef240cd86731132218f53307a8763802ac3",
+  "size": 25087450,
+  "signature": "RK8/xYjyHsLtsjMxJettJMDiflRSu7YicuXNNopSQ1HExuWtxKFw+WoIGh8sV2d6G5/7L0xnKsZmPNDtBf3FDw==",
+  "notes": "A3.7.13：取消独立更新中心，版本与更新并入“系统与关于”；默认只显示 App/后端版本、状态与必要按钮；更新公告默认折叠，点击展开；更新源、仅 Wi-Fi、自动检查收进“更新设置”弹层。配套后端 H3.4.6。",
   "mirror_urls": [
-    "https://aka.doubaocdn.com/s/V4AvK0SfVF"
+    "https://aka.doubaocdn.com/s/Pwd9VgYLmc"
   ]
 }
