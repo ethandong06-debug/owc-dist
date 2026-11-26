@@ -1,12 +1,12 @@
 {
-  "version": "A3.7.6",
-  "version_code": 30706,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.6/OpenWrt-Console-A3.7.6-arm64.apk",
-  "sha256": "c58b127af620a333c77b981c383e67738e2f0d3106247d06eac2b950d3b4e55e",
-  "size": 24872926,
-  "signature": "i6VsnDVyngQWQnTqxh0FiZUX9K/t/zAzwObe42ev18R5DpIyXxR5NMxI3WNXbn/jA7vsYcKiWlXnt0syFOu/Bg==",
-  "notes": "A3.7.6: 修复隧道刚建立后系统默认网络切到 VPN 时，原生服务把 VPN 虚拟网络误判为“不可用”并拆链的问题；VPN 自身网络不再参与断网/换网判定，网络可用性只看非 VPN 承载网，且不再把 VALIDATED 作为硬门槛。保留 A3.7.5 的后端采集/历史/gzip/WiFi 性能优化。flutter test 140 passed/1 skipped，analyze 0 error/0 warning。",
+  "version": "A3.7.7",
+  "version_code": 30707,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.7/OpenWrt-Console-A3.7.7-arm64.apk",
+  "sha256": "667521989bc9be59b33e2c0949058ff12203652b91355cabfe7902f0afb76a5b",
+  "size": 24873170,
+  "signature": "ikr3YG++iVZxS+PDedACoL8ZTlZF/KnugJeJneuw28FPQ9ybJylhR1nzVXNH/zhqodiMcFGlc2lnazgo+hQdCA==",
+  "notes": "网络页新增硬件加速卡片：显示 NSS/ECM、MediaTek PPE 或软件流卸载，支持启停并给出流量证据；固件缺能力时禁用开关并说明原因。\n首次安装/救援内置后端推荐升级到 H3.4.5。",
   "mirror_urls": [
-    "https://aka.doubaocdn.com/s/KUIlaXzjkz"
+    "https://aka.doubaocdn.com/s/6s4mZYDrel"
   ]
 }
