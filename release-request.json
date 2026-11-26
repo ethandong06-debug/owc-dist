@@ -1,0 +1,11 @@
+{
+  "version": "A3.7.8",
+  "version_code": 30708,
+  "tag": "A3.7.8",
+  "apk_url": "https://aka.doubaocdn.com/s/83gnICpk7j",
+  "asset_name": "OpenWrt-Console-A3.7.8-arm64.apk",
+  "sha256": "fdd990663f1379cf4b303777d90c6104928f8047675788644656ba7ecd48908e",
+  "size": 24873210,
+  "signature": "tLGvt/RN5OyQ1YraZyzfrLOoHixM/ToFKWZmEnSrj+WWiv+faAGsO0sQsZxn7pNxzlKdz64LHNIccCEMtFhaAw==",
+  "notes": "修复更新中心下载完成后离开页面重进仍提示下载：更新任务改由 AppState 级 AppUpdateManager 持有，持久化清单与下载记录，已下载 APK 按 versionCode/sha256/size 校验后直接安装；permission_required 返回后不再重下；APK 改存 applicationSupport/updates 并补 FileProvider files-path。A3.7.8 / 30708，后端沿用 H3.4.5。flutter test 151 通过、1 跳过；真机安装、权限返回和通知仍待验收。"
+}
