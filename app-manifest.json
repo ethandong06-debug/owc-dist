@@ -1,9 +1,12 @@
 {
-  "version": "A3.7.11",
-  "version_code": 30711,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.11/OpenWrt-Console-A3.7.11-arm64.apk",
-  "sha256": "eb4347dd0909ce412489683aeeb268a6e81099170548472e50d44f5af9c4fd78",
-  "size": 25020998,
-  "signature": "z+XUP5CdGqqz1HLr9xLnWPTFKWDWHNf88DudauVpjOtb3ouLd3VWYP+wj1Vb7l2bLkGuaPoe0TghYGvEnRPUBw==",
-  "notes": "## A3.7.11 / 30711 — 修复局域网登录被 443 预检挡住\n\n- 修复 A3.7.10 的登录回归：裸地址先按 https:443 做 ubus 预检，路由器只在 80 开 /ubus 时，预检直接报“无法连接 443”，旧版 SDK 的 80 回退根本走不到。\n- 预检现在在内网地址遇到传输失败时自动回退 http:80，并让后续 SDK 复用同一端点；443 可用时仍优先 HTTPS。\n- 证书指纹不匹配不触发降级，仍直接拒绝；公网地址也不降级。\n- 其余页面优化与 A3.7.10 相同。\n\nAPK: 25,020,998 B\nSHA256: eb4347dd0909ce412489683aeeb268a6e81099170548472e50d44f5af9c4fd78\n\n后端继续 H3.4.5；建议直接覆盖安装。"
+  "version": "A3.7.12",
+  "version_code": 30712,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.12/OpenWrt-Console-A3.7.12-arm64.apk",
+  "sha256": "4c581da1cf36adc18693de28e626c5bfd2b8f7d2e23d788cf21338ef6146ea63",
+  "size": 25087394,
+  "signature": "Yg4ZWW5aNL6n/q2vgOrzNv+9KltVWIZmkyICeauWj4RkJ2Prjo48tx3HHDkRScis6WJz3JUotH/6BOXJfejZCg==",
+  "notes": "## A3.7.12 / 30712 — 网络页从 WiFi 往下补齐\n\n按确认的“WiFi 以上的都不要，从 WiFi 开始往下都可以要”：\n\n- 删除 hero、拓扑、公网 IP/速率总览，WiFi 第一。\n- WAN 详情、线路质量、LAN/DHCP 租约、端口计数、VLAN、加速统计、Ping/DNS/路由/端口工具。\n- 内置后端推荐 H3.4.6。\n\nAPK: 25,087,394 B\nSHA256: 4c581da1cf36adc18693de28e626c5bfd2b8f7d2e23d788cf21338ef6146ea63\n建议覆盖安装。未真机验收。",
+  "mirror_urls": [
+    "https://aka.doubaocdn.com/s/V4AvK0SfVF"
+  ]
 }
