@@ -1,9 +1,12 @@
 {
-  "version": "A3.7.8",
-  "version_code": 30708,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.8/OpenWrt-Console-A3.7.8-arm64.apk",
-  "sha256": "fdd990663f1379cf4b303777d90c6104928f8047675788644656ba7ecd48908e",
-  "size": 24873210,
-  "signature": "tLGvt/RN5OyQ1YraZyzfrLOoHixM/ToFKWZmEnSrj+WWiv+faAGsO0sQsZxn7pNxzlKdz64LHNIccCEMtFhaAw==",
-  "notes": "修复更新中心下载完成后离开页面重进仍提示下载：更新任务改由 AppState 级 AppUpdateManager 持有，持久化清单与下载记录，已下载 APK 按 versionCode/sha256/size 校验后直接安装；permission_required 返回后不再重下；APK 改存 applicationSupport/updates 并补 FileProvider files-path。A3.7.8 / 30708，后端沿用 H3.4.5。flutter test 151 通过、1 跳过；真机安装、权限返回和通知仍待验收。"
+  "version": "A3.7.9",
+  "version_code": 30709,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.9/OpenWrt-Console-A3.7.9-arm64.apk",
+  "sha256": "567dcddba778e30caf8003d7757eb1957854a419727820b2c35e76c4ff68bef3",
+  "size": 24889770,
+  "signature": "R45i7CVvtd9hQdK+bdKqW7R6FKbKGapJVKIDOUCDk7UzESTn5rfeK5y3xT7ctNosvEa6jhFyYzed5QbxUAUzAQ==",
+  "notes": "## A3.7.9 / 30709 — 更新中心六项加固与后台下载\n\n- 下载中可取消：Android DownloadManager 任务直接取消，应用内 HttpClient 通过关闭 client 中止；更新中心显示“取消下载”。\n- 旧清单保护：更新源返回更低版本或空清单时，保留已保存/已下载的更高版本，不降级、不删包。\n- 清单源并发：六源并发探测，单源 18 秒上限，取成功源中 versionCode 最大者；下载进度按百分比/约 120ms 节流。\n- Android 后台下载：接入系统 DownloadManager，App 被杀后继续下载；冷启动恢复 pending，完成后重新校验 SHA256 再转为待安装。\n- 安装前原生校验：包名、清单 versionCode、发布签名证书 SHA-256 全部匹配才允许打开系统安装器。\n- 下载链路加固：写 .part 校验通过后原子重命名；每 URL 最多 2 次并按 mirror_urls 重试；发布清单带已校验 CDN 镜像。\n\nAPK: 24,889,770 B\nSHA256: 567dcddba778e30caf8003d7757eb1957854a419727820b2c35e76c4ff68bef3\n\n本版未做真机验收；后台杀进程继续下载、完成通知、权限返回、系统安装器与原生签名校验仍需真机确认。后端继续沿用 H3.4.5。",
+  "mirror_urls": [
+    "https://aka.doubaocdn.com/s/6oR6GfHfz5"
+  ]
 }
