@@ -1,9 +1,9 @@
 {
-  "version": "A3.7.10",
-  "version_code": 30710,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.10/OpenWrt-Console-A3.7.10-arm64.apk",
-  "sha256": "b441081571d61a7af7caa0bf26200f1ebf869e0f6fad4928e79e0ba7b87e959c",
+  "version": "A3.7.11",
+  "version_code": 30711,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.11/OpenWrt-Console-A3.7.11-arm64.apk",
+  "sha256": "eb4347dd0909ce412489683aeeb268a6e81099170548472e50d44f5af9c4fd78",
   "size": 25020998,
-  "signature": "mzK5O6peCcUHbC9iJx+np/z7RYHfe7OLH4FyFjgiuFM0G1OBU4q3oy/B5ZX6mPY4701S5jcblotizeKygdyHAA==",
-  "notes": "## A3.7.10 / 30710 — 登录、设备、网络、设置与弹窗一次收口\n\n- 登录增加 ubus 预检：局域网 3 秒、隧道 5 秒；账号或密码错误在密码框下秒级提示，按钮显示当前阶段。\n- 设备页增加设备/管理入口、在线优先/名称/流量排序、实时 ↓/↑、上次在线和新设备“新”标记。\n- 网络页删除独立 DNS/DHCP 卡，DNS 进 WAN、DHCP 留 LAN；默认 WiFi 第一，长按卡片拖动排序，右上角排序/关闭。\n- 设置页退出登录改为“返回登录页”，只断会话，保留地址/账号/密码；危险区只留恢复默认。\n- 证书/SSH 指纹改用专用信任层；小按钮触控区 44×40；主视图实现词改人话，空态统一“没读到……”。\n\nAPK: 25,020,998 B\nSHA256: b441081571d61a7af7caa0bf26200f1ebf869e0f6fad4928e79e0ba7b87e959c\n\n本版未做真机验收；后端继续 H3.4.5。"
+  "signature": "z+XUP5CdGqqz1HLr9xLnWPTFKWDWHNf88DudauVpjOtb3ouLd3VWYP+wj1Vb7l2bLkGuaPoe0TghYGvEnRPUBw==",
+  "notes": "## A3.7.11 / 30711 — 修复局域网登录被 443 预检挡住\n\n- 修复 A3.7.10 的登录回归：裸地址先按 https:443 做 ubus 预检，路由器只在 80 开 /ubus 时，预检直接报“无法连接 443”，旧版 SDK 的 80 回退根本走不到。\n- 预检现在在内网地址遇到传输失败时自动回退 http:80，并让后续 SDK 复用同一端点；443 可用时仍优先 HTTPS。\n- 证书指纹不匹配不触发降级，仍直接拒绝；公网地址也不降级。\n- 其余页面优化与 A3.7.10 相同。\n\nAPK: 25,020,998 B\nSHA256: eb4347dd0909ce412489683aeeb268a6e81099170548472e50d44f5af9c4fd78\n\n后端继续 H3.4.5；建议直接覆盖安装。"
 }
