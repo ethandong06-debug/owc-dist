@@ -1,12 +1,9 @@
 {
-  "version": "A3.7.14",
-  "version_code": 30714,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.14/OpenWrt-Console-A3.7.14-arm64.apk",
-  "sha256": "53b7567da7d3a714d5499cf3639dcc01550152adfde45779c7b6452233a79aa5",
+  "version": "A3.7.15",
+  "version_code": 30715,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.15/OpenWrt-Console-A3.7.15-arm64.apk",
+  "sha256": "758312d709a0709d679bf15ee81c578956552f826a9bae020ed527267e2ce7f9",
   "size": 25087450,
-  "signature": "T1j7yn/LKL1dET7AXgiYxOmBMcO0zC0p2h2iPXFjISPOU9DkRgivpZElzCl9TxBvV9gWt32V+ktYsfVywV+OAQ==",
-  "notes": "A3.7.14：修复无远程会话时仍占用 VPN。局域网登录成功后主动拆掉遗留 VpnService；局域网重连失败不再静默回退到已保存隧道；启动/回前台同步原生隧道状态；远程页显示后台重试/等待网络真实状态并可停止。flutter test 162 pass 1 skipped；analyze 0 error 0 warning；未做手机真机验收。",
-  "mirror_urls": [
-    "https://aka.doubaocdn.com/s/NrjCe7KFHw"
-  ]
+  "signature": "BBvhB7UQ/nVwGbgtby5XQwO0FNqFQ+AWGRoQcRrytZmN8p5Y50lvfU5uONUsXu7XbCuK6l22J+rp0drR71kHCQ==",
+  "notes": "A3.7.15：打开 App 不再掐断其他 VPN。根因是 MainActivity.stateMap() 在每次 state() 轮询中调用 VpnService.prepare()，Android 文档明确该 API 会停掉其他 App 的 VPN；现改为缓存授权结果，只在用户显式建立远程隧道时调用一次 prepare()。WgVpnService.stop() 在没有本服务实例时不再拉起服务。同时修复链路健康计数被本机 vpn.state() 清零、startTunnel() 空 SDK 抛 TypeError、removeTunnel() 先删 peer 导致本机 VPN 不拆、VPN 建立后识别不到物理 Wi-Fi、onDestroy() 遗留幽灵 running/systemUp。flutter test 164 pass 1 skipped；analyze 0 error 0 warning；未做手机真机验收。"
 }
