@@ -1,0 +1,11 @@
+{
+  "version": "A3.7.10",
+  "version_code": 30710,
+  "tag": "A3.7.10",
+  "apk_url": "https://aka.doubaocdn.com/s/rQTbZQPtQn",
+  "asset_name": "OpenWrt-Console-A3.7.10-arm64.apk",
+  "sha256": "b441081571d61a7af7caa0bf26200f1ebf869e0f6fad4928e79e0ba7b87e959c",
+  "size": 25020998,
+  "signature": "mzK5O6peCcUHbC9iJx+np/z7RYHfe7OLH4FyFjgiuFM0G1OBU4q3oy/B5ZX6mPY4701S5jcblotizeKygdyHAA==",
+  "notes": "## A3.7.10 / 30710 — 登录、设备、网络、设置与弹窗一次收口\n\n- 登录增加 ubus 预检：局域网 3 秒、隧道 5 秒；账号或密码错误在密码框下秒级提示，按钮显示当前阶段。\n- 设备页增加设备/管理入口、在线优先/名称/流量排序、实时 ↓/↑、上次在线和新设备“新”标记。\n- 网络页删除独立 DNS/DHCP 卡，DNS 进 WAN、DHCP 留 LAN；默认 WiFi 第一，长按卡片拖动排序，右上角排序/关闭。\n- 设置页退出登录改为“返回登录页”，只断会话，保留地址/账号/密码；危险区只留恢复默认。\n- 证书/SSH 指纹改用专用信任层；小按钮触控区 44×40；主视图实现词改人话，空态统一“没读到……”。\n\nAPK: 25,020,998 B\nSHA256: b441081571d61a7af7caa0bf26200f1ebf869e0f6fad4928e79e0ba7b87e959c\n\n本版未做真机验收；后端继续 H3.4.5。"
+}
