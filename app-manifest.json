@@ -1,12 +1,12 @@
 {
-  "version": "A3.7.5",
-  "version_code": 30705,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.5/OpenWrt-Console-A3.7.5-arm64.apk",
-  "sha256": "3add47ad90cd68f54478d6ec8e64a15bbf0cccdd6d67ef0780a6b48468e8dbe0",
+  "version": "A3.7.6",
+  "version_code": 30706,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.6/OpenWrt-Console-A3.7.6-arm64.apk",
+  "sha256": "c58b127af620a333c77b981c383e67738e2f0d3106247d06eac2b950d3b4e55e",
   "size": 24872926,
-  "signature": "U8ecyWy4g14koCnB+mHaaIDHISO3XOog9tJGCusb77xtg6+HJH9KmSTkVDi6XyifafLInp06DffikN21R/VdCg==",
-  "notes": "A3.7.5: 后端历史查询改为 store 内流式聚合并二分跳过过期前缀；JSON gzip 改为 BestSpeed 并池化 writer/body/buffer；历史缓存增加 single-flight；WireGuard 状态 3s、端点 30s 缓存；WiFi iwinfo info 按设备 30s 缓存；App WiFi 回滚 timer 按需启动，历史页去掉每帧列表拷贝。flutter test 140 passed/1 skipped，analyze 0 error/0 warning。",
+  "signature": "i6VsnDVyngQWQnTqxh0FiZUX9K/t/zAzwObe42ev18R5DpIyXxR5NMxI3WNXbn/jA7vsYcKiWlXnt0syFOu/Bg==",
+  "notes": "A3.7.6: 修复隧道刚建立后系统默认网络切到 VPN 时，原生服务把 VPN 虚拟网络误判为“不可用”并拆链的问题；VPN 自身网络不再参与断网/换网判定，网络可用性只看非 VPN 承载网，且不再把 VALIDATED 作为硬门槛。保留 A3.7.5 的后端采集/历史/gzip/WiFi 性能优化。flutter test 140 passed/1 skipped，analyze 0 error/0 warning。",
   "mirror_urls": [
-    "https://aka.doubaocdn.com/s/JDIZ3Nk49D"
+    "https://aka.doubaocdn.com/s/KUIlaXzjkz"
   ]
 }
