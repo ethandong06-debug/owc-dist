@@ -1,12 +1,9 @@
 {
-  "version": "A3.7.22",
-  "version_code": 30722,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.22/OpenWrt-Console-A3.7.22-arm64.apk",
-  "sha256": "d1660eda584f67d40829d120a76a945b21613417418f7098e1163d399ead3ff7",
-  "size": 25285542,
-  "signature": "SdrhW2/rbfSV9PgEPhNPJsz0TAZjvidoZvIKHxnckdlXYHEE6EgFru93gpiw11LUT8fHRDAzWSYE/O+PqmcrBw==",
-  "notes": "# A3.7.22 — WAN / VLAN 完整字段与高级网络启停\n\n发布日期：2026-11-28\n类型：arm64 APK + GitHub Release 签名清单\n配套后端：`H3.4.11`\n\n## 变更\n\n- WAN 编辑页改为完整字段矩阵：协议、接口设备、启用 WAN、DHCP 主机名、静态 IP/掩码/网关、PPPoE 用户名/密码/服务名/keepalive、DNS 与 DNS 搜索域、自动 DNS、IPv6/委托前缀、DNS 优先级、MTU/IPv6 MTU、路由跃点、TTL、IPv4/IPv6 路由表、默认路由、强制链路、MAC 覆盖。\n- WAN 页重构为“当前连接摘要 + 连接方式 + 基本 + DNS/IPv6 + MTU + 路由高级”分组卡片，底部固定“预检并提交”；字段按协议条件显示，不再在 DHCP 页面展示 PPPoE 字段。\n- VLAN 编辑页按类型补字段：8021q/device 增加 MTU、IPv6 MTU、MAC、TX 队列、IPv6、DAD 探测次数；所有类型增加备注；switch_vlan/bridge-vlan 保留端口多选，并增加已选计数、全选、清空。\n- VLAN 页重构为“摘要 + 标识 + 上游 + 高级 + 备注 + 端口 + 类型说明”，底部固定提交；交换/桥接 VLAN 明确不展示设备级 MTU/MAC，避免静默无效。\n- 高级网络详情新增“停用/启用此接口/设备”快捷操作：先预检，展示警告与断线风险，确认后走 90 秒事务；管理接口停用会明确提示可能立即失联。\n- 后端 WAN/VLAN 读取、写入、校验、预检 diff 同步扩展；WAN 新增 `dns_search`，密码仍不进入 diff。\n- 版本标注 `A3.7.22 / 30722`；内置后端推荐同步 `H3.4.11`。\n\n## 验证\n\n- 后端：`go test ./...` 全部通过；`go vet ./...` 通过。\n- 后端新增/扩展测试：WAN 高级字段、DNS 搜索域、非法值拒绝；VLAN 设备高级字段、交换 VLAN 拒绝设备字段、列表暴露高级配置。\n- App：`flutter test` 173 通过、1 跳过、0 失败；新增 4 个 WAN/VLAN 编辑页 widget 测试。\n- App：`flutter analyze` 0 error、0 warning（仅历史 info）。\n- APK：`versionName=A3.7.22`，`versionCode=30722`，包名 `com.jason.openwrtconsole.v3`。\n- 解包确认内置后端推荐 `H3.4.11`，URL/SHA256 正确。\n- 签名证书 SHA256 与 A3.7.20/A3.7.21 相同，可覆盖安装。\n\n## 制品\n\n- `OpenWrt 控制台-A3.7.22-arm64.apk`\n- 大小：25,285,542 B\n- SHA256：`d1660eda584f67d40829d120a76a945b21613417418f7098e1163d399ead3ff7`\n\n## 已知限制\n\n- 未在真实 OWC 路由器 + 手机上做点击验收；WAN MAC/默认路由/停用 WAN 等会直接影响上网，真机验收仍待补。\n- 交换/桥接 VLAN 仍不支持 tagged/untagged 端口语法编辑，只编辑现有端口成员。\n- VLAN 只编辑现有 section，不新增/删除。",
-  "mirror_urls": [
-    "https://aka.doubaocdn.com/s/nU3whn4UCm"
-  ]
+  "version": "A3.7.23",
+  "version_code": 30723,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.23/OpenWrt 控制台-A3.7.23-arm64.apk",
+  "sha256": "3bedaee508e2baf12cae01ddd4395f7a1e2a8792812738b085bf8aa299fe88bc",
+  "size": 25285870,
+  "signature": "/h8xeSOZ+YzpSnyvd34qd2B8Cv21aA0yc6pRntMdcMJks1wTO59NP7/sb7G8VvKrb2+OqtvyNvBl4D6f7eJ/BQ==",
+  "notes": "A3.7.23 高级网络五项优化\n\n1. 高级网络通用对象新增 description、MTU6、MAC、TX 队列、IPv6、DAD 读写；按设备/接口类型下发可编辑字段，8021q VLAN 仍走专用页。\n2. 搜索范围扩展到 IP、DNS、MAC、备注等当前配置值；增加清空按钮与“匹配 N 个对象”。\n3. 新增“只看可编辑”筛选，显示总数与可编辑数量。\n4. 编辑页增加脏状态跟踪：未修改时按钮显示“没有修改”且不可点击；新增备注、MTU6、MAC、TX 队列、DAD 本地校验。\n5. VLAN 管理页支持按 ID、名称、类型、设备、端口、备注搜索，增加清空、匹配计数与空态。\n\n验证：flutter test 176 通过 / 1 跳过；flutter analyze 0 error / 0 warning；go test ./... 与 go vet ./... 通过。\n已知限制：未做真机点击验收；改 MAC、关闭 IPv6、改端口/VLAN 可能影响当前上网，应用仍走 90 秒事务确认与自动回滚。\n"
 }
