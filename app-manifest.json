@@ -1,12 +1,12 @@
 {
-  "version": "A3.7.17",
-  "version_code": 30717,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.17/OpenWrt 控制台-A3.7.17-arm64.apk",
-  "sha256": "5160e9e16bc460205698296aa3884768bb235fc877cd32238744a0899091ede7",
-  "size": 25087410,
-  "signature": "66/LoVT1/oirXDAOUYY+BTyVeIbdfYwdFOjFrSpAdCL2JiXX5Wv/rL9s1YFEUYtCQnC4ITDw1kya8aMdPGkDBg==",
-  "notes": "# A3.7.17 — 系统组件整合、关于页拆分与安全文案收口\n\n发布日期：2026-11-27\n类型：arm64 APK + GitHub Release 签名清单\n配套后端：`H3.4.8`\n\n## 变更\n\n### 1. 系统组件页\n\n- “依赖自检”与“组件与包管理”合并为“系统组件”，分“依赖检测 / 已装组件”两个 tab。\n- 依赖检测保留分组、报告复制与批量安装；每个缺失且可安装项新增“安装此组件”，不必先点批量。\n- 已装组件只读，不提供卸载；`rpcd / uhttpd / network / dnsmasq / firewall / dropbear / wireless / odhcpd / wireguard / owc / sing-box / mosdns` 标记“系统关键”。\n- 增加组件搜索、默认只显示 OWC 相关组件，可切“显示全部系统包”，避免一屏几百个系统包。\n\n### 2. 系统与关于\n\n- 拆成“版本 / 维护 / 关于”三个 tab。\n- “版本”显示版本与更新卡、App 版本号、固件、接口、入口、实时通道。\n- “维护”显示真实服务状态（来自 H3.4.8 `GET /api/v1/services`）、上次异常、隧道事件；服务行有运行中/已停止/状态未知，可单独重启。\n- “关于”保留本机启动耗时、证书/指纹、许可。\n\n### 3. 文案与安全\n\n- WiFi 密码和统一密码改为密码框，默认遮蔽。\n- WiFi 事务文案改为“90 秒内确认保留，否则自动恢复上一组设置”，按钮改为“保存并应用，等待确认”。\n- 登录页增加 HTTP/HTTPS 提示：HTTPS 加密；HTTP 明文；默认先试 HTTPS。\n- 工具目录移除“组件与包管理”；“依赖自检”改名“系统组件”；SSH 文案改为“App 内原生 SSH，不依赖 ttyd”。\n- DDNS 自定义服务商改为“仅域名托管/不自动更新”，并注明仅用于记录。\n\n## 验证\n\n- `flutter test`：164 通过，1 跳过，0 失败。\n- `flutter analyze`：0 error，0 warning；仅既有 info。\n- `go test ./...`：全部包通过；`go vet ./...`：通过。\n- APK versionName=`A3.7.17`，versionCode=`30717`，包名 `com.jason.openwrtconsole.v3`。\n\n## 已知限制\n\n- 未做手机真机点击验收，未取得 adb logcat / 状态栏截图。\n-“系统关键”标记是本地白名单，不替代后端权限；本页本身不提供卸载。\n- 旧后端没有 `GET /api/v1/services` 时，维护页只显示“后端没有返回服务状态”，不回退到硬编码服务列表。\n",
+  "version": "A3.7.18",
+  "version_code": 30718,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.18/OpenWrt 控制台-A3.7.18-arm64.apk",
+  "sha256": "9e88bdb1d39666a77f4f48f39167920e2543b7a5f8abc77cb3fbf843c3ea7484",
+  "size": 25087642,
+  "signature": "Vg0UKdz+43KkHh05CtUUo9rjpB35kCzAu2K9VGT/XPYToarU1wEgy9brEPMrBRNFZdfQAtjadWaTdJlcx34HBA==",
+  "notes": "# A3.7.18 — 修正内置后端版本资产并补齐 H3.4.8 安装分支\n\n发布日期：2026-11-27\n类型：arm64 APK + GitHub Release 签名清单\n配套后端：`H3.4.8`\n\n## 为什么发这一版\n\nA3.7.17 的功能整改已完成并发布，但发布后核查发现 APK 内置的 `assets/router-base/config/backend-versions.env` 仍指向 `H3.4.7`，安装器也没有 `H3.4.8` 分支。也就是说，新设备通过 App 内置“一键部署后端”仍会装 H3.4.7。已发布的 A3.7.17 不覆盖，本版只修正这个发布遗留问题。\n\n## 修正\n\n- `app/assets/router-base/config/backend-versions.env` 与根 `tools/backend-versions.env` 同步，推荐版本和最大已测版本均为 `H3.4.8`。\n- `install-backend-v3.sh` 默认版本改为 `H3.4.8`，新增 `H3.4.8` 下载分支，URL/SHA 与后端 Release 一致。\n- `tools/install-backend-v3.sh` 同步为同一份安装器。\n- 更新 `backend_manifest_test.dart`，强制校验内置清单、安装器分支与根安装器三方一致，避免再次出现“版本清单改了、APK 资产没改”。\n\n## 包含的上一版整改\n\nA3.7.17 的全部整改仍在本版中：系统组件双 tab、单项安装、组件搜索与系统关键标记；系统与关于三 tab、真实服务状态；WiFi 密码遮蔽与 90 秒确认文案；HTTP/HTTPS 提示；DDNS 仅域名托管；工具目录收口。\n\n## 验证\n\n- `flutter test`：164 通过，1 跳过，0 失败。\n- `flutter analyze`：0 error，0 warning；仅既有 info。\n- 解包 APK 校验内置资产：`OWC_V3_RECOMMENDED=H3.4.8`、`OWC_V3_MAX_TESTED=H3.4.8`，H3.4.8 URL/SHA 与后端包一致。\n- APK versionName=`A3.7.18`，versionCode=`30718`，包名 `com.jason.openwrtconsole.v3`。\n\n## 已知限制\n\n- 未做手机真机点击验收，未取得 adb logcat / 状态栏截图。\n- 服务状态依赖后端 `GET /api/v1/services`；旧后端仍只显示“后端没有返回服务状态”，不回退硬编码列表。\n",
   "mirror_urls": [
-    "https://aka.doubaocdn.com/s/tU8lTdHO5I"
+    "https://aka.doubaocdn.com/s/64CZmcbk0J"
   ]
 }
