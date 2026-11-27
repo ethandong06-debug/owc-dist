@@ -1,12 +1,12 @@
 {
-  "version": "A3.7.18",
-  "version_code": 30718,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.18/OpenWrt.-A3.7.18-arm64.apk",
-  "sha256": "9e88bdb1d39666a77f4f48f39167920e2543b7a5f8abc77cb3fbf843c3ea7484",
-  "size": 25087642,
-  "signature": "Vg0UKdz+43KkHh05CtUUo9rjpB35kCzAu2K9VGT/XPYToarU1wEgy9brEPMrBRNFZdfQAtjadWaTdJlcx34HBA==",
-  "notes": "# A3.7.18 — 修正内置后端版本资产并补齐 H3.4.8 安装分支\n\n发布日期：2026-11-27\n类型：arm64 APK + GitHub Release 签名清单\n配套后端：`H3.4.8`\n\n## 为什么发这一版\n\nA3.7.17 的功能整改已完成并发布，但发布后核查发现 APK 内置的 `assets/router-base/config/backend-versions.env` 仍指向 `H3.4.7`，安装器也没有 `H3.4.8` 分支。也就是说，新设备通过 App 内置“一键部署后端”仍会装 H3.4.7。已发布的 A3.7.17 不覆盖，本版只修正这个发布遗留问题。\n\n## 修正\n\n- `app/assets/router-base/config/backend-versions.env` 与根 `tools/backend-versions.env` 同步，推荐版本和最大已测版本均为 `H3.4.8`。\n- `install-backend-v3.sh` 默认版本改为 `H3.4.8`，新增 `H3.4.8` 下载分支，URL/SHA 与后端 Release 一致。\n- `tools/install-backend-v3.sh` 同步为同一份安装器。\n- 更新 `backend_manifest_test.dart`，强制校验内置清单、安装器分支与根安装器三方一致，避免再次出现“版本清单改了、APK 资产没改”。\n\n## 包含的上一版整改\n\nA3.7.17 的全部整改仍在本版中：系统组件双 tab、单项安装、组件搜索与系统关键标记；系统与关于三 tab、真实服务状态；WiFi 密码遮蔽与 90 秒确认文案；HTTP/HTTPS 提示；DDNS 仅域名托管；工具目录收口。\n\n## 验证\n\n- `flutter test`：164 通过，1 跳过，0 失败。\n- `flutter analyze`：0 error，0 warning；仅既有 info。\n- 解包 APK 校验内置资产：`OWC_V3_RECOMMENDED=H3.4.8`、`OWC_V3_MAX_TESTED=H3.4.8`，H3.4.8 URL/SHA 与后端包一致。\n- APK versionName=`A3.7.18`，versionCode=`30718`，包名 `com.jason.openwrtconsole.v3`。\n\n## 已知限制\n\n- 未做手机真机点击验收，未取得 adb logcat / 状态栏截图。\n- 服务状态依赖后端 `GET /api/v1/services`；旧后端仍只显示“后端没有返回服务状态”，不回退硬编码列表。\n",
+  "version": "A3.7.19",
+  "version_code": 30719,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.19/OpenWrt-Console-A3.7.19-arm64.apk",
+  "sha256": "888434aca32a4ecb082ee8286addfb48516e40a62a3ad81ded9850909e8206b7",
+  "size": 25153418,
+  "signature": "LrFEsPLgO8Ir7EYaEwidPqtv0lPC22t5C4qOA/nZ4JKZTwTA04Lq+5vYf290SCXa+0ilkj+CwwmfhCam786uBA==",
+  "notes": "# A3.7.19 — WAN/VLAN 编辑读取后台 UCI 配置\n\n- WAN 编辑改用 wan.config，不再回填运行态 IP/网关/DNS/MTU。\n- 支持清空 MTU/metric/device；省略 DNS 保留原值。\n- VLAN 使用原始 name/device/ifname/ports，old_name 支持重命名。\n- switch_vlan/bridge-vlan 缺少 device 时不再写默认 switch/bridge。\n配套后端 H3.4.9；App 内置后端清单同步 H3.4.9。",
   "mirror_urls": [
-    "https://aka.doubaocdn.com/s/64CZmcbk0J"
+    "https://aka.doubaocdn.com/s/ny54hzreUi"
   ]
 }
