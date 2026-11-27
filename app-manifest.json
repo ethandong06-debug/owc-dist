@@ -1,9 +1,12 @@
 {
-  "version": "A3.7.21",
-  "version_code": 30721,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.21/OpenWrt-Console-A3.7.21-arm64.apk",
-  "sha256": "2d2f9f6eb6b49058c7888da05da5d5d2caf32a54893fd7b4fb7302f5db275fad",
-  "size": 25219374,
-  "signature": "3NBvmfMo2LQ3Lv1fq7ZX89ohhzsiWFE4f2ZqkLO6JWYWzEcwBnCW9mVLlNXukXpUMHKMrPO2H62XMRGkjo6VBQ==",
-  "notes": "# A3.7.21 — 版本与更新卡 v2\n\n发布日期：2026-11-28\n类型：arm64 APK + GitHub Release 签名清单\n配套后端：`H3.4.10`（本次不升级后端）\n\n## 变更\n\n- 更新卡标题栏新增“更新设置”；底部只保留“检查更新”。\n- App / 后端行改为“当前版本 → 目标版本”，有更新时显示包大小。\n- App 与后端检查改为并行，单侧失败不阻塞另一侧。\n- 只保留一条 `App 更新公告`，默认折叠；后端公告不再单独占一行。\n- 新增更新来源状态条：显示最近一次成功验签清单的来源与实际耗时；官方源显示 GitHub 兜底状态。\n- 底部显示“上次检查 HH:mm”；检查失败时在卡片内显示原因与“重试”。\n- App 下载中显示进度条、已下载 MB 与“取消下载”；后端安装中禁用升级按钮。\n- 删除版本明细下方重复的安全说明长句。\n\n## 验证\n\n- `flutter test`：168 通过、1 跳过、0 失败。\n- `flutter analyze`：0 error、0 warning；180 条均为历史 info。\n- APK：`versionName=A3.7.21`，`versionCode=30721`，包名 `com.jason.openwrtconsole.v3`。\n- 解包确认内置后端推荐版本仍为 `H3.4.10`。\n- 签名证书 SHA256 与 A3.7.20 相同，可覆盖安装。\n\n## 制品\n\n- `OpenWrt 控制台-A3.7.21-arm64.apk`\n- 大小：25,219,374 B\n- SHA256：`2d2f9f6eb6b49058c7888da05da5d5d2caf32a54893fd7b4fb7302f5db275fad`\n\n## 已知限制\n\n- 未在真实 OWC 路由器 + 手机上做点击验收；源延迟、取消下载、窄屏触控仍需真机确认。\n- 后端公告不在更新卡展示；后端说明仍以 `docs/releases/H3.4.10.md` 为准。\n- 更新设置弹层内容未重做，本次只把入口移到标题栏。"
+  "version": "A3.7.22",
+  "version_code": 30722,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.22/OpenWrt-Console-A3.7.22-arm64.apk",
+  "sha256": "d1660eda584f67d40829d120a76a945b21613417418f7098e1163d399ead3ff7",
+  "size": 25285542,
+  "signature": "SdrhW2/rbfSV9PgEPhNPJsz0TAZjvidoZvIKHxnckdlXYHEE6EgFru93gpiw11LUT8fHRDAzWSYE/O+PqmcrBw==",
+  "notes": "# A3.7.22 — WAN / VLAN 完整字段与高级网络启停\n\n发布日期：2026-11-28\n类型：arm64 APK + GitHub Release 签名清单\n配套后端：`H3.4.11`\n\n## 变更\n\n- WAN 编辑页改为完整字段矩阵：协议、接口设备、启用 WAN、DHCP 主机名、静态 IP/掩码/网关、PPPoE 用户名/密码/服务名/keepalive、DNS 与 DNS 搜索域、自动 DNS、IPv6/委托前缀、DNS 优先级、MTU/IPv6 MTU、路由跃点、TTL、IPv4/IPv6 路由表、默认路由、强制链路、MAC 覆盖。\n- WAN 页重构为“当前连接摘要 + 连接方式 + 基本 + DNS/IPv6 + MTU + 路由高级”分组卡片，底部固定“预检并提交”；字段按协议条件显示，不再在 DHCP 页面展示 PPPoE 字段。\n- VLAN 编辑页按类型补字段：8021q/device 增加 MTU、IPv6 MTU、MAC、TX 队列、IPv6、DAD 探测次数；所有类型增加备注；switch_vlan/bridge-vlan 保留端口多选，并增加已选计数、全选、清空。\n- VLAN 页重构为“摘要 + 标识 + 上游 + 高级 + 备注 + 端口 + 类型说明”，底部固定提交；交换/桥接 VLAN 明确不展示设备级 MTU/MAC，避免静默无效。\n- 高级网络详情新增“停用/启用此接口/设备”快捷操作：先预检，展示警告与断线风险，确认后走 90 秒事务；管理接口停用会明确提示可能立即失联。\n- 后端 WAN/VLAN 读取、写入、校验、预检 diff 同步扩展；WAN 新增 `dns_search`，密码仍不进入 diff。\n- 版本标注 `A3.7.22 / 30722`；内置后端推荐同步 `H3.4.11`。\n\n## 验证\n\n- 后端：`go test ./...` 全部通过；`go vet ./...` 通过。\n- 后端新增/扩展测试：WAN 高级字段、DNS 搜索域、非法值拒绝；VLAN 设备高级字段、交换 VLAN 拒绝设备字段、列表暴露高级配置。\n- App：`flutter test` 173 通过、1 跳过、0 失败；新增 4 个 WAN/VLAN 编辑页 widget 测试。\n- App：`flutter analyze` 0 error、0 warning（仅历史 info）。\n- APK：`versionName=A3.7.22`，`versionCode=30722`，包名 `com.jason.openwrtconsole.v3`。\n- 解包确认内置后端推荐 `H3.4.11`，URL/SHA256 正确。\n- 签名证书 SHA256 与 A3.7.20/A3.7.21 相同，可覆盖安装。\n\n## 制品\n\n- `OpenWrt 控制台-A3.7.22-arm64.apk`\n- 大小：25,285,542 B\n- SHA256：`d1660eda584f67d40829d120a76a945b21613417418f7098e1163d399ead3ff7`\n\n## 已知限制\n\n- 未在真实 OWC 路由器 + 手机上做点击验收；WAN MAC/默认路由/停用 WAN 等会直接影响上网，真机验收仍待补。\n- 交换/桥接 VLAN 仍不支持 tagged/untagged 端口语法编辑，只编辑现有端口成员。\n- VLAN 只编辑现有 section，不新增/删除。",
+  "mirror_urls": [
+    "https://aka.doubaocdn.com/s/nU3whn4UCm"
+  ]
 }
