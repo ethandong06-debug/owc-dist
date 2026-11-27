@@ -1,0 +1,64 @@
+name: repair-app-release-assets
+
+on:
+  push:
+    paths:
+      - release-fix-trigger.json
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Normalize A3.7.23 asset name and manifest URL
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/owc-rel
+          gh release download A3.7.23 --repo "$GITHUB_REPOSITORY" \
+            --dir /tmp/owc-rel --pattern '*A3.7.23-arm64.apk'
+          asset=$(find /tmp/owc-rel -maxdepth 1 -name '*A3.7.23-arm64.apk' -print -quit)
+          test -n "$asset"
+          cp "$asset" /tmp/OpenWrt-Console-A3.7.23-arm64.apk
+          sha256sum /tmp/OpenWrt-Console-A3.7.23-arm64.apk
+          test "$(stat -c%s /tmp/OpenWrt-Console-A3.7.23-arm64.apk)" = "25285870"
+
+          # Drop the sanitized APK asset and the old manifest asset.
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/A3.7.23" \
+            --jq '.assets[] | select(.name | test("A3.7.23-arm64.apk$")) | .id' |
+            while IFS= read -r id; do
+              [ -n "$id" ] && gh api --method DELETE "repos/$GITHUB_REPOSITORY/releases/assets/$id"
+            done
+          manifest_id=$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/A3.7.23" \
+            --jq '.assets[] | select(.name == "app-manifest.json") | .id')
+          if [ -n "$manifest_id" ]; then
+            gh api --method DELETE "repos/$GITHUB_REPOSITORY/releases/assets/$manifest_id"
+          fi
+
+          python3 - <<'PY'
+          import json
+          path = 'app-manifest.json'
+          data = json.load(open(path, encoding='utf-8'))
+          data['url'] = 'https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.23/OpenWrt-Console-A3.7.23-arm64.apk'
+          with open(path, 'w', encoding='utf-8') as f:
+              json.dump(data, f, ensure_ascii=False, indent=2)
+              f.write('\n')
+          print(data['url'])
+          PY
+
+          gh release upload A3.7.23 /tmp/OpenWrt-Console-A3.7.23-arm64.apk \
+            --repo "$GITHUB_REPOSITORY"
+          gh release upload A3.7.23 app-manifest.json \
+            --repo "$GITHUB_REPOSITORY"
+
+          git config user.name "owc-release-bot"
+          git config user.email "owc-release-bot@users.noreply.github.com"
+          git add app-manifest.json
+          git rm -f release-fix-trigger.json
+          git commit -m "release: repair A3.7.23 asset name and manifest URL [skip publish]"
+          git push
