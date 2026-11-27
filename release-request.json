@@ -1,0 +1,14 @@
+{
+  "version": "A3.7.19",
+  "version_code": 30719,
+  "tag": "A3.7.19",
+  "apk_url": "https://aka.doubaocdn.com/s/ny54hzreUi",
+  "asset_name": "OpenWrt-Console-A3.7.19-arm64.apk",
+  "sha256": "888434aca32a4ecb082ee8286addfb48516e40a62a3ad81ded9850909e8206b7",
+  "size": 25153418,
+  "signature": "LrFEsPLgO8Ir7EYaEwidPqtv0lPC22t5C4qOA/nZ4JKZTwTA04Lq+5vYf290SCXa+0ilkj+CwwmfhCam786uBA==",
+  "mirror_urls": [
+    "https://aka.doubaocdn.com/s/ny54hzreUi"
+  ],
+  "notes": "# A3.7.19 — WAN/VLAN 编辑读取后台 UCI 配置\n\n- WAN 编辑改用 wan.config，不再回填运行态 IP/网关/DNS/MTU。\n- 支持清空 MTU/metric/device；省略 DNS 保留原值。\n- VLAN 使用原始 name/device/ifname/ports，old_name 支持重命名。\n- switch_vlan/bridge-vlan 缺少 device 时不再写默认 switch/bridge。\n配套后端 H3.4.9；App 内置后端清单同步 H3.4.9。"
+}
