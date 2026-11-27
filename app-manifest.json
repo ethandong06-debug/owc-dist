@@ -1,9 +1,9 @@
 {
-  "version": "A3.7.23",
-  "version_code": 30723,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.23/OpenWrt-Console-A3.7.23-arm64.apk",
-  "sha256": "3bedaee508e2baf12cae01ddd4395f7a1e2a8792812738b085bf8aa299fe88bc",
-  "size": 25285870,
-  "signature": "/h8xeSOZ+YzpSnyvd34qd2B8Cv21aA0yc6pRntMdcMJks1wTO59NP7/sb7G8VvKrb2+OqtvyNvBl4D6f7eJ/BQ==",
-  "notes": "A3.7.23 高级网络五项优化\n\n1. 高级网络通用对象新增 description、MTU6、MAC、TX 队列、IPv6、DAD 读写；按设备/接口类型下发可编辑字段，8021q VLAN 仍走专用页。\n2. 搜索范围扩展到 IP、DNS、MAC、备注等当前配置值；增加清空按钮与“匹配 N 个对象”。\n3. 新增“只看可编辑”筛选，显示总数与可编辑数量。\n4. 编辑页增加脏状态跟踪：未修改时按钮显示“没有修改”且不可点击；新增备注、MTU6、MAC、TX 队列、DAD 本地校验。\n5. VLAN 管理页支持按 ID、名称、类型、设备、端口、备注搜索，增加清空、匹配计数与空态。\n\n验证：flutter test 176 通过 / 1 跳过；flutter analyze 0 error / 0 warning；go test ./... 与 go vet ./... 通过。\n已知限制：未做真机点击验收；改 MAC、关闭 IPv6、改端口/VLAN 可能影响当前上网，应用仍走 90 秒事务确认与自动回滚。\n"
+  "version": "A3.7.24",
+  "version_code": 30724,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.24/OpenWrt-Console-A3.7.24-arm64.apk",
+  "sha256": "849da3d70f8d85b4a1641c6a832bbd08f26e44b99bc82752e2967b6b61eef8aa",
+  "size": 25286166,
+  "signature": "+s2siWoDMFRjcR4mzArbq0DH+4TvM7LL2qVim1JlZwAq/GNRL2nU7gPNHW/GSEaJDmDN+tNYHYT8i2WoC5RJAA==",
+  "notes": "A3.7.24 五项优化\n\n1. WAN 编辑页：未修改时按钮显示“没有修改”且禁用；表单脏状态实时判断；IPv6 启用时 MTU 低于 1280 给出本地提示。\n2. VLAN 编辑页：同样增加未修改保护；8021q/device 类型增加 IPv6 与 MTU 一致性校验；端口选择同步参与脏状态。\n3. 设备页：新增按设备类型筛选，显示每类数量，支持“全部设备/未设置”恢复；补齐 PC 类型名称与图标；修复 390px 窄屏设备卡状态/流量列溢出。\n4. 工具页：新增“最近使用”，最多 4 个，本地持久化，进入工具自动记录，可一键清除。\n5. 后端预检：WAN/VLAN/高级网络统一增加“IPv6 启用时 MTU 低于 1280”警告；显式关闭 IPv6 后不再误报。\n\n验证：go test ./... 与 go vet ./... 通过；flutter test 181 通过 / 1 跳过；flutter analyze 0 error / 0 warning。\n已知限制：未做真机点击验收；改 MAC、关闭 IPv6、改端口/VLAN 可能影响当前上网，仍走 90 秒事务确认与自动回滚。"
 }
