@@ -1,12 +1,9 @@
 {
-  "version": "A3.7.19",
-  "version_code": 30719,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.19/OpenWrt-Console-A3.7.19-arm64.apk",
-  "sha256": "888434aca32a4ecb082ee8286addfb48516e40a62a3ad81ded9850909e8206b7",
-  "size": 25153418,
-  "signature": "LrFEsPLgO8Ir7EYaEwidPqtv0lPC22t5C4qOA/nZ4JKZTwTA04Lq+5vYf290SCXa+0ilkj+CwwmfhCam786uBA==",
-  "notes": "# A3.7.19 — WAN/VLAN 编辑读取后台 UCI 配置\n\n- WAN 编辑改用 wan.config，不再回填运行态 IP/网关/DNS/MTU。\n- 支持清空 MTU/metric/device；省略 DNS 保留原值。\n- VLAN 使用原始 name/device/ifname/ports，old_name 支持重命名。\n- switch_vlan/bridge-vlan 缺少 device 时不再写默认 switch/bridge。\n配套后端 H3.4.9；App 内置后端清单同步 H3.4.9。",
-  "mirror_urls": [
-    "https://aka.doubaocdn.com/s/ny54hzreUi"
-  ]
+  "version": "A3.7.20",
+  "version_code": 30720,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.20/OpenWrt-Console-A3.7.20-arm64.apk",
+  "sha256": "b2554aa2808508fa32c66cd95477c83c89c7311470577df4e71f2af95b279f3f",
+  "size": 25219374,
+  "signature": "SE6ZeQSAg4JGrMoDGixa8cHJ+ZcrJfuJfBkwN/5FdNhBbU5ySRTCOlnbAz/63dwAov1i3vDHPhNUbORDeuejDg==",
+  "notes": "# A3.7.20 — WAN/VLAN 独立编辑页与高级网络\n\n发布日期：2026-11-28\n类型：arm64 APK + GitHub Release 签名清单\n配套后端：`H3.4.10`\n\n## 变更\n\n- WAN 卡“编辑”进入 `WAN 设置` 独立页；VLAN 卡新增“管理”，进入 `VLAN 管理`，再进单条 `编辑 VLAN`。\n- WAN/VLAN 表单由后端 schema 约束：MTU、设备、端口、VLAN ID 改选项/多选；静态 IP、PPPoE 凭据、自定义 DNS、VLAN 名称仍手输。\n- WAN/VLAN 和高级页通用对象都先走后端预检，展示字段错误、diff、警告和断线风险，再应用。\n- 新增高级网络页：接口/设备/物理口三段；详情含当前运行、当前配置、可编辑字段；只编辑现有对象，不新增/删除，不提供原始 UCI 编辑。\n- 内置后端清单与安装器同步 H3.4.10。\n\n## 验证\n\n- 后端：`go test ./...` 全部通过；`go vet ./...` 通过；`owc-daemon --version` 输出 `H3.4.10`。\n- App：`flutter test` 167 通过、1 跳过、0 失败；`flutter analyze` 0 error、0 warning（仅历史 info）。\n- APK：versionName `A3.7.20`，versionCode `30720`；解包确认推荐后端 H3.4.10，URL/SHA256 正确。\n\n## 制品\n\n- `OpenWrt 控制台-A3.7.20-arm64.apk`\n- 大小：25,219,374 B\n- SHA256：`b2554aa2808508fa32c66cd95477c83c89c7311470577df4e71f2af95b279f3f`\n\n## 已知限制\n\n- 未在真实 OWC 路由器上做手机端点击验收。\n- 第一批只编辑现有对象，不新增/删除；原始 UCI 编辑仍走 SSH。\n"
 }
