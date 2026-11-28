@@ -1,0 +1,11 @@
+{
+  "version": "A3.7.37",
+  "version_code": 30737,
+  "tag": "A3.7.37",
+  "apk_url": "https://aka.doubaocdn.com/s/pGyBwOvVHi",
+  "asset_name": "OpenWrt-Console-A3.7.37-arm64.apk",
+  "sha256": "9dff40a34756131315692b9f198c5e8c6d20fd2358218dace8ef3c9c139cd794",
+  "size": 25550578,
+  "signature": "5zxbu8OXmUcGMLupMF7RFgdxJOoUs97oxcR0N6eoK3sbYrRzTDxnz3sDQqBjAcmgnQOlT/IzA785RQy1CH4TBw==",
+  "notes": "App A3.7.37 / 30737\n\n- 网络变更确认：WAN/VLAN/高级网络预检差异改为中文字段名，确认弹层新增“复制详情”，一并复制差异、风险提示和回滚说明。\n- 高级网络：筛选栏新增“复制清单”，一次复制当前命中的接口/设备/物理口，按类型计数，最多 60 条并标注未列出数量。\n- 设备页：搜索/状态/类型筛选生效时显示“显示 X/N 台”和条件摘要，并提供一键清除筛选；空结果不再像设备丢失。\n- 设置页：采集频率切换增加保存中状态和防重复点击；失败时保留本机选择并提示等待下次连接同步。\n- 后端 H3.4.21：预检差异中的 MAC 统一为实际写入的小写冒号格式；新增 MTU>1500、IPv6 开启时 DAD=0、TX 队列=0 三项风险提示。\n\n验证：flutter test 269 通过 / 1 跳过；flutter analyze 0 error / 0 warning；go test ./...、go vet ./... 通过。后端 H3.4.21。"
+}
