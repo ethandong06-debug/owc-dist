@@ -1,0 +1,14 @@
+{
+  "version": "A3.7.32",
+  "version_code": 30732,
+  "tag": "A3.7.32",
+  "apk_url": "https://aka.doubaocdn.com/s/xPLjMFWJlp",
+  "asset_name": "OpenWrt-Console-A3.7.32-arm64.apk",
+  "sha256": "96f9d0351b335048f2b34f6e51bb6effbfd1966c530c1766f240778b3fc6e94a",
+  "size": 25419066,
+  "signature": "MqWOE/UnbbcaI3AJ2MeMciyJvEQexBSHw0X7qKSlAs5++6r0U936uFAT/YHJopZc6dRQb8ucIAswDv0CPEMhBw==",
+  "notes": "A3.7.32：计划任务等价 cron 去重与清单复制、访客网段/DHCP 校验、WiFi 回滚倒计时防重复、重启提交锁定。",
+  "mirror_urls": [
+    "https://aka.doubaocdn.com/s/xPLjMFWJlp"
+  ]
+}
