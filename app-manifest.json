@@ -1,9 +1,9 @@
 {
-  "version": "A3.7.36",
-  "version_code": 30736,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.36/OpenWrt-Console-A3.7.36-arm64.apk",
-  "sha256": "6720f96887eacb6d507e03e38896db766ea1591f501704b9cbe1f47681461831",
-  "size": 25550354,
-  "signature": "PHYh50JU+75Ta78n/DO/a7isW8ZB8V+uiSYMVAxifW7kl2FTwEmnCgAjPgdd6fd4X8+V5M0tq9nhfFLuKiXWCA==",
-  "notes": "App A3.7.36 / 30736\n\n- 隧道客户端公钥统一校验：支持 44 位 Base64 或 64 位 hex 并规范化为 Base64，拦截非法/非 32 字节/全零/重复公钥；添加节点防重复提交。\n- 隧道客户端节点新增搜索与全部/在线/离线/临时计数筛选，显示 X/N 与空态清除。\n- 历史曲线清洗时间戳<=0、NaN/Infinity 与重复点，按时间升序绘图/统计/CSV，并提示已忽略 N 个异常点。\n- SSH 终端新增复制输出与清屏；复制统一 CRLF、去尾空白、超 20 万字符保留最近并注明截断。\n- DDNS 保存/验证共用域名校验，保存防重与“正在应用…”，新增未保存提示与恢复当前配置。\n\n验证：flutter test 261 通过 / 1 跳过；flutter analyze 0 error / 0 warning；go test ./...、go vet ./... 通过。后端沿用 H3.4.20。"
+  "version": "A3.7.37",
+  "version_code": 30737,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.37/OpenWrt-Console-A3.7.37-arm64.apk",
+  "sha256": "9dff40a34756131315692b9f198c5e8c6d20fd2358218dace8ef3c9c139cd794",
+  "size": 25550578,
+  "signature": "5zxbu8OXmUcGMLupMF7RFgdxJOoUs97oxcR0N6eoK3sbYrRzTDxnz3sDQqBjAcmgnQOlT/IzA785RQy1CH4TBw==",
+  "notes": "App A3.7.37 / 30737\n\n- 网络变更确认：WAN/VLAN/高级网络预检差异改为中文字段名，确认弹层新增“复制详情”，一并复制差异、风险提示和回滚说明。\n- 高级网络：筛选栏新增“复制清单”，一次复制当前命中的接口/设备/物理口，按类型计数，最多 60 条并标注未列出数量。\n- 设备页：搜索/状态/类型筛选生效时显示“显示 X/N 台”和条件摘要，并提供一键清除筛选；空结果不再像设备丢失。\n- 设置页：采集频率切换增加保存中状态和防重复点击；失败时保留本机选择并提示等待下次连接同步。\n- 后端 H3.4.21：预检差异中的 MAC 统一为实际写入的小写冒号格式；新增 MTU>1500、IPv6 开启时 DAD=0、TX 队列=0 三项风险提示。\n\n验证：flutter test 269 通过 / 1 跳过；flutter analyze 0 error / 0 warning；go test ./...、go vet ./... 通过。后端 H3.4.21。"
 }
