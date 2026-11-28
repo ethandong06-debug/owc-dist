@@ -1,9 +1,9 @@
 {
-  "version": "A3.7.35",
-  "version_code": 30735,
-  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.35/OpenWrt-Console-A3.7.35-arm64.apk",
-  "sha256": "25ba31d135a55065a577aded25fdc8020f287cba8337a76d498efaf406bb90e6",
+  "version": "A3.7.36",
+  "version_code": 30736,
+  "url": "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.36/OpenWrt-Console-A3.7.36-arm64.apk",
+  "sha256": "6720f96887eacb6d507e03e38896db766ea1591f501704b9cbe1f47681461831",
   "size": 25550354,
-  "signature": "24G8lOXl6tMfSV2h3YdeAWicj8qYQj/SCu5YWIs7ARXKUfWc7F9lQa2dVjqqNojyMl9NVtXmlKTZqxrhlsfcBA==",
-  "notes": "App A3.7.35 / 30735\n\n- WiFi 单频、双频合一、拆回两个三处表单统一校验 SSID 32 字节上限与控制字符，WPA 口令 8–63 位可打印 ASCII；失焦提示并在保存前拦截。\n- 一键网络体检展示上次体检时间与耗时，新增“复制摘要”，含通过/警告/失败计数、逐层结果、详情和失败建议。\n- 安全检查结果增加“全部/需处理/风险”计数筛选，复制摘要随筛选范围变化，无匹配时给空态与“查看全部”。\n- 系统服务卡增加“运行 X/Y · 异常 Z”、复制状态与全部/异常筛选；异常为空时给空态，状态文案覆盖运行中、已停止、未知、未安装。\n- 远程隧道“链路检查”卡新增复制链路摘要，含状态、对端/本端、路由、MTU、握手、流量、重连次数、网络模式、错误与备注。\n\n验证：flutter test 254 通过 / 1 跳过；flutter analyze 0 error / 0 warning；go test ./...、go vet ./... 通过。后端沿用 H3.4.20。\n"
+  "signature": "PHYh50JU+75Ta78n/DO/a7isW8ZB8V+uiSYMVAxifW7kl2FTwEmnCgAjPgdd6fd4X8+V5M0tq9nhfFLuKiXWCA==",
+  "notes": "App A3.7.36 / 30736\n\n- 隧道客户端公钥统一校验：支持 44 位 Base64 或 64 位 hex 并规范化为 Base64，拦截非法/非 32 字节/全零/重复公钥；添加节点防重复提交。\n- 隧道客户端节点新增搜索与全部/在线/离线/临时计数筛选，显示 X/N 与空态清除。\n- 历史曲线清洗时间戳<=0、NaN/Infinity 与重复点，按时间升序绘图/统计/CSV，并提示已忽略 N 个异常点。\n- SSH 终端新增复制输出与清屏；复制统一 CRLF、去尾空白、超 20 万字符保留最近并注明截断。\n- DDNS 保存/验证共用域名校验，保存防重与“正在应用…”，新增未保存提示与恢复当前配置。\n\n验证：flutter test 261 通过 / 1 跳过；flutter analyze 0 error / 0 warning；go test ./...、go vet ./... 通过。后端沿用 H3.4.20。"
 }
