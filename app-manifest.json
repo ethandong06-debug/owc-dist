@@ -1,12 +1,12 @@
 {
-  "version": "A3.7.41",
-  "version_code": 30741,
-  "url": "https://aka.doubaocdn.com/s/dd61khLX4O",
-  "sha256": "f9fe3573a659c33bddc64e6ffd930b8468ae5608dc8b9aa13d844492a4f4cdf8",
-  "size": 25617050,
-  "signature": "qrXZ3EUS8kjEolqdUuLChu5wa8EpgmZnHMJ82ozf/lyga0TtvfbKiMw1tgn9SAI8/vJtdOo/627pTTNN1kfNAg==",
-  "notes": "# A3.7.41 — 修复后端升级包结构并接入 H3.4.25\n\n- 版本：`A3.7.41 / 30741`\n- 配套后端：`H3.4.25`\n- 日期：2026-11-28\n- 类型：arm64 签名 APK + GitHub Release 签名清单\n\n## 修复\n\n- 内置后端推荐版本与最大已测版本从不可用的 H3.4.24 改为 H3.4.25。\n- 首次安装/救援安装器默认下载 H3.4.25，并移除 H3.4.23/H3.4.24 的失效分支；H3.4.22 及更早回滚分支保留。\n- 后端版本清单新增 H3.4.25 的 CDN URL 与 SHA256，H3.4.24 标注为仅存档、OTA/安装器不可用。\n- 后端清单一致性测试同步到 H3.4.25，防止 App 再次指向裸二进制包。\n\n## 验证\n\n- `flutter test`：282 通过 / 1 跳过 / 0 失败。\n- `flutter analyze --no-pub`：0 error / 0 warning，仅 185 条 info。\n- 签名证书 SHA256 与 A3.7.40 一致，可直接覆盖安装。\n- 尚未在真实 OWC 路由器上完成手机端 OTA 点击验收。\n\n## 制品\n\n- `OpenWrt 控制台-A3.7.41-arm64.apk`\n- 大小：25,617,050 B\n- SHA256：`f9fe3573a659c33bddc64e6ffd930b8468ae5608dc8b9aa13d844492a4f4cdf8`\n- CDN：https://aka.doubaocdn.com/s/dd61khLX4O\n- Release：https://github.com/ethandong06-debug/owc-dist/releases/tag/A3.7.41",
+  "version": "A3.7.42",
+  "version_code": 30742,
+  "url": "https://aka.doubaocdn.com/s/CEaklGJPLR",
+  "sha256": "f79b5fcd4bf1efb6f86106641977ee9522949697cf7767c9511b9a8c0292b836",
+  "size": 25617322,
+  "signature": "oRwREn/oEWwwxQPKXrASwG0F+UwEVlQOpqf2kIkGwlWngrZ7DbeIGlYVGrBcux0GQScH8XcTfcHcfowYZl94DQ==",
+  "notes": "# A3.7.42 — 五项优化：OTA 存储预检、升级看门狗与编辑/导出体验\n\n- 版本：`A3.7.42 / 30742`\n- 配套后端：`H3.4.26`\n- 日期：2026-11-28\n- 类型：arm64 签名 APK + GitHub Release 签名清单\n\n## 五项优化\n\n1. **后端 OTA 存储预检**：升级前检查“包大小 + 8 MiB”可用空间，不足返回 `507 STORAGE_FULL`；启动与应用前清理超过 24 小时的 `update-*.tar.gz/.log`，避免小 flash 被陈旧临时包占满。\n2. **后端升级看门狗改为按进度判断**：不再用固定 4 分钟误杀慢速但仍在下载的任务；只有状态或下载字节 4 分钟无变化才停轮询，安装阶段放宽到 8 分钟。\n3. **更新卡错误可复制且可行动**：新增“复制错误详情”，把包结构缺失、存储不足、SHA256/大小校验失败、更新源全失败、已有任务运行映射为明确下一步，同时保留后端原文。\n4. **WAN/VLAN 变更摘要复制**：有未提交修改时出现“复制变更”，只复制字段名和修改项数，不带 PPPoE 密码等敏感值，方便工单/客服沟通。\n5. **历史 CSV 增加导出元数据**：文件头带 App 版本、指标、档位、导出时间、样本数与单位，隔天再打开也能分清 24h/7d/30d 与数据口径。\n\n## 验证\n\n- `flutter test`：287 通过 / 1 跳过 / 0 失败。\n- `flutter analyze --no-pub`：0 error / 0 warning，185 条 info。\n- `go test ./...`、`go vet ./...`、`gofmt -l .`：通过。\n- 签名证书 SHA256 与 A3.7.41 一致，可直接覆盖安装。\n\n## 制品\n\n- `OpenWrt 控制台-A3.7.42-arm64.apk`\n- 大小：25,617,322 B\n- SHA256：`f79b5fcd4bf1efb6f86106641977ee9522949697cf7767c9511b9a8c0292b836`\n- CDN：https://aka.doubaocdn.com/s/CEaklGJPLR\n- Release：https://github.com/ethandong06-debug/owc-dist/releases/tag/A3.7.42\n\n## 已知限制\n\n- 尚未在真实 OWC 路由器上完成手机端点击 OTA 验收。\n- CSV 前 7 行为 `#` 开头的元数据，直接用 Excel 打开会占列；如需纯表格，可从第 8 行表头开始选取。",
   "mirror_urls": [
-    "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.41/OpenWrt-Console-A3.7.41-arm64.apk"
+    "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.42/OpenWrt-Console-A3.7.42-arm64.apk"
   ]
 }
