@@ -1,0 +1,11 @@
+{
+  "version": "A3.7.34",
+  "version_code": 30734,
+  "tag": "A3.7.34",
+  "apk_url": "https://aka.doubaocdn.com/s/XFqz4JF1VY",
+  "asset_name": "OpenWrt-Console-A3.7.34-arm64.apk",
+  "sha256": "b8609fa1c5913e888ad576c8899ecbbdae00b4b40a1929db14b445223188adde",
+  "size": 25484818,
+  "signature": "VZqsBZGtcittFbRiTA7NQGmmqOqni5Rq6dz2j8Ivp5jvd+M0pydDEn15qWpVGgVZtY0WiMgpH00O2zvboFhUBg==",
+  "notes": "App A3.7.34 / 30734\n\n- 计划任务支持动作/表达式搜索、预设筛选、匹配计数与无结果空态。\n- 系统组件支持“只看需处理”筛选，缺失/必需未知项可直接聚焦。\n- 访客 SSID 按 32 字节、WPA 口令按 8–63 位可打印 ASCII 本地校验，减少无效提交。\n- 资源详情新增一键复制摘要与下拉刷新。\n- 命令输出限高滚动；取消中状态、失败/取消配色修正，完成后可清空输出。\n\n验证：flutter test 245 通过 / 1 跳过；flutter analyze 0 error / 0 warning；go test ./...、go vet ./... 通过。后端沿用 H3.4.20。\n"
+}
