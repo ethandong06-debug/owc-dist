@@ -1,12 +1,12 @@
 {
-  "version": "A3.7.38",
-  "version_code": 30738,
-  "url": "https://aka.doubaocdn.com/s/nUCe29vrBr",
-  "sha256": "a1e7300e4a6e17b1488ce460235df4ad1bfad3b3ec3543cd692fbcae2918be87",
-  "size": 25616358,
-  "signature": "6RP63dvW5oFZtXYNr4LlKVtv54u4kHtJXBlE/b2XxCiJ0cMJLwyOy1KmrbwNwIGOHuLUpdMqe9FmK+8ecUkoDQ==",
-  "notes": "App A3.7.38 / 30738\n\n- 修复升级卡在下载 0MB：Android 系统下载 10 秒无进度或 25 秒无增长时，自动取消并回落应用内镜像下载；下载失败/校验失败也自动换源。\n- 下载卡显示真实阶段（排队/等待 Wi-Fi/下载中/校验中）和“已下载 X / Y”，不再只显示孤立的 0MB。\n- 下载超时收紧：响应头 15 秒、数据块间隔 25 秒，镜像切换更快。\n- 后端升级：H3.4.22 起 Apply 立即返回 downloading，下载/校验/安装转入后台；App 对下载中不再弹“V3 接口响应超时”。\n- 清单主地址改为直达 CDN，GitHub Release 作为镜像；旧 App A3.7.36 的系统下载也会直接拿到 CDN 地址。\n- 测试：flutter test 271 通过 / 1 跳过；flutter analyze 0 error / 0 warning；go test ./...、go vet ./... 通过。\n",
+  "version": "A3.7.39",
+  "version_code": 30739,
+  "url": "https://aka.doubaocdn.com/s/1J3auvsPIV",
+  "sha256": "a0c173b532a6d4e7474807f44f81f1978e0c49459d3a624e9c976974a1b6d08e",
+  "size": 25616730,
+  "signature": "cWbaud4Y5mKVJ2T+YU49nlytoy8ktSj0W7Qq8b85sal9JHL+XD4xZQhR47htJxaKz7bTphLrz9tbRCPWJBDdAQ==",
+  "notes": "App A3.7.39 / 30739\n\n- 后端升级显示真实下载进度：版本卡读取 download_bytes/total/source/attempt/attempts，显示“已下载 X / Y”、当前源主机和“第 n/m 源”。\n- 网络页新增“网络修改待确认”卡：按后端 watchdog_s 倒计时（默认 60 秒），显示事务号、剩余秒数与确认/稍后处理；超时后提示后端已自动回滚并可刷新清除。\n- 版本卡新增“后端更新公告”，读取后端清单 notes，可折叠展开。\n- 高级网络对象编辑新增变更摘要：只列真实变化字段，空值与空字符串视为相同；新增“恢复当前值”，预检前可一键还原。\n- 设备批量操作有跳过/失败时弹出结果详情，列出失败设备并支持复制结果，不再只显示一句“部分失败”。\n- 后端 H3.4.23 同步发布：OTA 下载写入真实字节、总大小、源主机与镜像尝试序号。\n- 测试：flutter test 275 通过 / 1 跳过；flutter analyze 0 error / 0 warning；go test ./...、go vet ./... 通过。\n",
   "mirror_urls": [
-    "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.38/OpenWrt-Console-A3.7.38-arm64.apk"
+    "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.39/OpenWrt-Console-A3.7.39-arm64.apk"
   ]
 }
