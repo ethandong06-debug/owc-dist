@@ -1,0 +1,15 @@
+{
+  "version": "A3.7.39",
+  "version_code": 30739,
+  "tag": "A3.7.39",
+  "apk_url": "https://aka.doubaocdn.com/s/1J3auvsPIV",
+  "download_url": "https://aka.doubaocdn.com/s/1J3auvsPIV",
+  "asset_name": "OpenWrt-Console-A3.7.39-arm64.apk",
+  "sha256": "a0c173b532a6d4e7474807f44f81f1978e0c49459d3a624e9c976974a1b6d08e",
+  "size": 25616730,
+  "signature": "cWbaud4Y5mKVJ2T+YU49nlytoy8ktSj0W7Qq8b85sal9JHL+XD4xZQhR47htJxaKz7bTphLrz9tbRCPWJBDdAQ==",
+  "mirror_urls": [
+    "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.39/OpenWrt-Console-A3.7.39-arm64.apk"
+  ],
+  "notes": "App A3.7.39 / 30739\n\n- 后端升级显示真实下载进度：版本卡读取 download_bytes/total/source/attempt/attempts，显示“已下载 X / Y”、当前源主机和“第 n/m 源”。\n- 网络页新增“网络修改待确认”卡：按后端 watchdog_s 倒计时（默认 60 秒），显示事务号、剩余秒数与确认/稍后处理；超时后提示后端已自动回滚并可刷新清除。\n- 版本卡新增“后端更新公告”，读取后端清单 notes，可折叠展开。\n- 高级网络对象编辑新增变更摘要：只列真实变化字段，空值与空字符串视为相同；新增“恢复当前值”，预检前可一键还原。\n- 设备批量操作有跳过/失败时弹出结果详情，列出失败设备并支持复制结果，不再只显示一句“部分失败”。\n- 后端 H3.4.23 同步发布：OTA 下载写入真实字节、总大小、源主机与镜像尝试序号。\n- 测试：flutter test 275 通过 / 1 跳过；flutter analyze 0 error / 0 warning；go test ./...、go vet ./... 通过。\n"
+}
