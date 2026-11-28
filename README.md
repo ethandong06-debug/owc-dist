@@ -21,7 +21,7 @@ App 先校验清单的 Ed25519 签名，再下载 APK 并校验 SHA256 与大小
 ## 每个 Release 的资产
 
 - `OpenWrt-Console-<版本>-arm64.apk` — 已签名的 arm64 安装包
-- `app-manifest.json` — 对应版本的签名清单，`.url` 指向本 Release 内的 APK
+- `app-manifest.json` — 对应版本的签名清单，`.url` 可指向直达 CDN；GitHub Release 资产作为 `mirror_urls` 镜像
 
 Release 是版本化、不可变的下载地址；`latest` 只指向最新正式版。旧版本仍可从各自 Release 回滚下载。
 
@@ -48,6 +48,8 @@ Release 是版本化、不可变的下载地址；`latest` 只指向最新正式
      "version_code": 30500,
      "tag": "A3.5.0",
      "apk_url": "https://…",
+     "download_url": "https://aka.doubaocdn.com/s/…",
+     "mirror_urls": ["https://github.com/ethandong06-debug/owc-dist/releases/download/A3.5.0/OpenWrt-Console-A3.5.0-arm64.apk"],
      "asset_name": "OpenWrt-Console-A3.5.0-arm64.apk",
      "sha256": "…",
      "size": 24707192,
@@ -62,7 +64,7 @@ Release 是版本化、不可变的下载地址；`latest` 只指向最新正式
 
 ## 不要做的事
 
-- 不要把 `aka.doubaocdn.com/s/...` 这类临时分享链接写进长期清单。
+- CDN 主地址必须保持可长期访问；GitHub Release 必须保留为镜像。不要把短期签名链接当作唯一来源。
 - 不要把 APK 反复提交进 Git 历史；Release asset 才是二进制归档位置。
 - 不要把 jsDelivr 作为主清单源；它的缓存可能长时间返回旧版本。
 - 不要把签名私钥提交到任何仓库。
