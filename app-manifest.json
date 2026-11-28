@@ -1,12 +1,12 @@
 {
-  "version": "A3.7.42",
-  "version_code": 30742,
-  "url": "https://aka.doubaocdn.com/s/CEaklGJPLR",
-  "sha256": "f79b5fcd4bf1efb6f86106641977ee9522949697cf7767c9511b9a8c0292b836",
-  "size": 25617322,
-  "signature": "oRwREn/oEWwwxQPKXrASwG0F+UwEVlQOpqf2kIkGwlWngrZ7DbeIGlYVGrBcux0GQScH8XcTfcHcfowYZl94DQ==",
-  "notes": "# A3.7.42 — 五项优化：OTA 存储预检、升级看门狗与编辑/导出体验\n\n- 版本：`A3.7.42 / 30742`\n- 配套后端：`H3.4.26`\n- 日期：2026-11-28\n- 类型：arm64 签名 APK + GitHub Release 签名清单\n\n## 五项优化\n\n1. **后端 OTA 存储预检**：升级前检查“包大小 + 8 MiB”可用空间，不足返回 `507 STORAGE_FULL`；启动与应用前清理超过 24 小时的 `update-*.tar.gz/.log`，避免小 flash 被陈旧临时包占满。\n2. **后端升级看门狗改为按进度判断**：不再用固定 4 分钟误杀慢速但仍在下载的任务；只有状态或下载字节 4 分钟无变化才停轮询，安装阶段放宽到 8 分钟。\n3. **更新卡错误可复制且可行动**：新增“复制错误详情”，把包结构缺失、存储不足、SHA256/大小校验失败、更新源全失败、已有任务运行映射为明确下一步，同时保留后端原文。\n4. **WAN/VLAN 变更摘要复制**：有未提交修改时出现“复制变更”，只复制字段名和修改项数，不带 PPPoE 密码等敏感值，方便工单/客服沟通。\n5. **历史 CSV 增加导出元数据**：文件头带 App 版本、指标、档位、导出时间、样本数与单位，隔天再打开也能分清 24h/7d/30d 与数据口径。\n\n## 验证\n\n- `flutter test`：287 通过 / 1 跳过 / 0 失败。\n- `flutter analyze --no-pub`：0 error / 0 warning，185 条 info。\n- `go test ./...`、`go vet ./...`、`gofmt -l .`：通过。\n- 签名证书 SHA256 与 A3.7.41 一致，可直接覆盖安装。\n\n## 制品\n\n- `OpenWrt 控制台-A3.7.42-arm64.apk`\n- 大小：25,617,322 B\n- SHA256：`f79b5fcd4bf1efb6f86106641977ee9522949697cf7767c9511b9a8c0292b836`\n- CDN：https://aka.doubaocdn.com/s/CEaklGJPLR\n- Release：https://github.com/ethandong06-debug/owc-dist/releases/tag/A3.7.42\n\n## 已知限制\n\n- 尚未在真实 OWC 路由器上完成手机端点击 OTA 验收。\n- CSV 前 7 行为 `#` 开头的元数据，直接用 Excel 打开会占列；如需纯表格，可从第 8 行表头开始选取。",
+  "version": "A3.7.43",
+  "version_code": 30743,
+  "url": "https://aka.doubaocdn.com/s/i835vCxJNV",
+  "sha256": "10d55b04ea653e8064b0f58e5d3ea851557eed805358d378b170acd5a13bee20",
+  "size": 25617614,
+  "signature": "uPkOGmZPddnoye+SU6NKfOr49jfOPiS6z8OGxcFqXlJjv7vgbf4JyPTdMti58Gs8/D0KPWgKfkKAjvmpZZuRCQ==",
+  "notes": "# A3.7.43 — 备份锁定筛选、冲突 IP 定位与错误复制\n\n- 版本：`A3.7.43 / 30743`\n- 配套后端：`H3.4.27`\n- 日期：2026-11-28\n- 类型：arm64 签名 APK + GitHub Release 签名清单\n\n## 五项优化\n\n1. **备份页锁定筛选**：新增“只看锁定”筛选、匹配数（显示 N / 总数）与一键重置；空态区分“没有备份”和“锁定/关键词无结果”，锁定的关键备份更容易先找到。\n2. **设备页冲突 IP 定位**：同 IP 在线设备卡片每行新增筛选按钮，点按即把搜索框设为该 IP、清空其他筛选，直接只看冲突终端，减少手工抄 IP。\n3. **错误横幅可复制**：所有 `ErrorBanner` 新增“复制错误”，一次带上摘要和“查看”里的模块详情；长错误被截断时也能把完整排障信息发给客服或贴到工单。\n4. **高级网络变更摘要复制**：对象编辑页有修改时出现“复制变更”，只复制对象名与字段标签，不带 MTU/MAC/地址等具体值，和 WAN/VLAN 编辑页口径一致。\n5. **后端任务队列错误语义**：队列已满返回 HTTP 429 / `RESOURCE_LIMIT`（retryable），未知任务类型返回 400 / `CAPABILITY_UNAVAILABLE`；不再把容量问题误报成“不支持的任务类型”。\n\n## 验证\n\n- `flutter test`：292 通过 / 1 跳过 / 0 失败。\n- `flutter analyze --no-pub --no-fatal-infos`：0 error / 0 warning，187 条 info。\n- `go test ./...`、`go vet ./...`、`gofmt -l .`：通过。\n- 签名证书 SHA256 与 A3.7.42 一致，可直接覆盖安装。\n\n## 制品\n\n- `OpenWrt 控制台-A3.7.43-arm64.apk`\n- 大小：25,617,614 B\n- SHA256：`10d55b04ea653e8064b0f58e5d3ea851557eed805358d378b170acd5a13bee20`\n- CDN：https://aka.doubaocdn.com/s/i835vCxJNV\n- Release：https://github.com/ethandong06-debug/owc-dist/releases/tag/A3.7.43\n\n## 已知限制\n\n- 尚未在真实 OWC 路由器上完成手机端点击 OTA 验收。\n- 错误横幅复制依赖系统剪贴板；部分定制系统会提示“已复制”但需在输入框长按粘贴确认。\n- 任务队列 429 只覆盖进程内队列容量，不替代路由器磁盘/内存耗尽的系统级保护。",
   "mirror_urls": [
-    "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.42/OpenWrt-Console-A3.7.42-arm64.apk"
+    "https://github.com/ethandong06-debug/owc-dist/releases/download/A3.7.43/OpenWrt-Console-A3.7.43-arm64.apk"
   ]
 }
